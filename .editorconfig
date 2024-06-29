@@ -1,0 +1,20 @@
+root = true
+
+[*]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+spaces_around_operators = true
+indent_brace_style = 1tbs
+
+[*.{js,ts}]
+quote_type = single
+
+[*.{html,jsoin}]
+quote_type = double
+
+[*.md]
+insert_final_newline = false

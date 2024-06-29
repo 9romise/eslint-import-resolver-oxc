@@ -1,0 +1,61 @@
+{
+  "name": "eslint-import-resolver-oxc",
+  "type": "module",
+  "version": "0.1.0",
+  "packageManager": "pnpm@9.4.0",
+  "description": "A resolver based on [oxc-resolver](https://github.com/oxc-project/oxc-resolver) for [eslint-plugin-import-x](https://github.com/un-ts/eslint-plugin-import-x)",
+  "author": "Vida Xie<https://github.com/9romise>",
+  "license": "MIT",
+  "homepage": "https://github.com/9romise/eslint-import-resolver-oxc#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/9romise/eslint-import-resolver-oxc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/9romise/eslint-import-resolver-oxc/issues"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "vitest",
+    "build": "tsup",
+    "prepare": "npx simple-git-hooks",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "release": "bumpp"
+  },
+  "peerDependencies": {
+    "eslint": "*"
+  },
+  "dependencies": {
+    "oxc-resolver": "^1.9.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.9",
+    "@vida0905/eslint-config": "^0.3.0",
+    "bumpp": "^9.4.1",
+    "changelogithub": "^0.13.7",
+    "eslint": "^9.6.0",
+    "eslint-import-resolver-oxc": "file:",
+    "lint-staged": "^15.2.7",
+    "simple-git-hooks": "^2.11.1",
+    "tsup": "^8.1.0",
+    "typescript": "^5.5.2"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
+  }
+}
