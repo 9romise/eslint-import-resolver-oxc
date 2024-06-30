@@ -1,22 +1,32 @@
-import process from 'node:process'
+import { cwd } from 'node:process'
 import type { NapiResolveOptions } from 'oxc-resolver'
 import { ResolverFactory } from 'oxc-resolver'
 
-// some default options copy from https://github.com/import-js/eslint-import-resolver-typescript/blob/master/src/index.ts
-const defaultOptions = {
+// @keep-sorted
+/**
+ * some default options copy from
+ * https://github.com/import-js/eslint-import-resolver-typescript/blob/master/src/index.ts
+ * https://github.com/rolldown/rolldown/blob/main/crates/rolldown_resolver/src/resolver.rs
+ */
+const defaultOptions: NapiResolveOptions = {
+  aliasFields: [
+    ['browser'],
+  ],
   conditionNames: [
+    'default',
     'types',
+
     'import',
+    'require',
+
+    'node',
+    'node-addons',
+    'browser',
+
     // APF: https://angular.io/guide/angular-package-format
     'esm2020',
     'es2020',
     'es2015',
-
-    'require',
-    'node',
-    'node-addons',
-    'browser',
-    'default',
   ],
   extensionAlias: {
     '.js': [
@@ -49,13 +59,12 @@ const defaultOptions = {
     'esm2020',
     'es2020',
 
-    'module',
-    'jsnext:main',
-
     'main',
+    'module',
+    'browser',
+    'jsnext:main',
   ],
-  preferRelative: true,
-  roots: [process.cwd()],
+  roots: [cwd()],
 }
 
 let resolver: ResolverFactory | undefined

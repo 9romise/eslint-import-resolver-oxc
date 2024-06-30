@@ -32,7 +32,6 @@
     "dist"
   ],
   "scripts": {
-    "test": "vitest",
     "build": "tsup",
     "prepare": "npx simple-git-hooks",
     "lint": "eslint .",
