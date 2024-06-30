@@ -24,11 +24,11 @@ Inside your `eslint.config.js`, pass the resolver to `eslint-plugin-import-x`:
 }
 ```
 
-This lib defaults to ESM, if you use CJS(not recommended), please wait for the subsequent release. Or you can configure it yourself according to the [documentation](https://github.com/oxc-project/oxc-resolver?tab=readme-ov-file#options).
-
 ### Options
 
-see [oxc-resolver](https://github.com/oxc-project/oxc-resolver?tab=readme-ov-file#options)
+Default options see [normalizeOptions.ts](./src/nomalizeOptions.ts)
+
+More info see [oxc-resolver](https://github.com/oxc-project/oxc-resolver?tab=readme-ov-file#options)
 
 ## Motivation
 
