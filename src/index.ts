@@ -67,17 +67,24 @@ const defaultOptions: NapiResolveOptions = {
   roots: [cwd()],
 }
 
+function normalizeOptions(options: NapiResolveOptions): NapiResolveOptions {
+  if (!options.tsconfig) {
+    defaultOptions.tsconfig = {
+      configFile: './tsconfig.json',
+      references: 'auto',
+    }
+  }
+  return {
+    ...defaultOptions,
+    ...options,
+  }
+}
+
 let resolver: ResolverFactory | undefined
-export function resolve(
-  source: string,
-  file: string,
-  options: NapiResolveOptions = {},
-): { found: boolean, path?: string } {
+export function resolve(source: string, file: string, options: NapiResolveOptions = {}): { found: boolean, path?: string } {
   if (!resolver) {
-    resolver = new ResolverFactory({
-      ...defaultOptions,
-      ...options,
-    })
+    options = normalizeOptions(options)
+    resolver = new ResolverFactory(options)
   }
 
   const result = resolver.sync(file, source)
