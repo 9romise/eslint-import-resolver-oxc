@@ -3,7 +3,7 @@ import { ResolverFactory } from 'oxc-resolver'
 import { normalizeOptions } from './nomalizeOptions'
 
 let resolver: ResolverFactory | undefined
-export function resolve(source: string, file: string, options: NapiResolveOptions = {}): { found: boolean, path?: string } {
+export function resolve(source: string, file: string, options: NapiResolveOptions | null = {}): { found: boolean, path?: string } {
   if (!resolver) {
     options = normalizeOptions(options)
     resolver = new ResolverFactory(options)

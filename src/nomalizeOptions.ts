@@ -66,8 +66,8 @@ const defaultOptions: NapiResolveOptions = {
   roots: [cwd()],
 }
 
-export function normalizeOptions(options: NapiResolveOptions = {}): NapiResolveOptions {
-  if (!options.tsconfig) {
+export function normalizeOptions(options: NapiResolveOptions | null = {}): NapiResolveOptions {
+  if (!options?.tsconfig) {
     defaultOptions.tsconfig = {
       configFile: './tsconfig.json',
       references: 'auto',
