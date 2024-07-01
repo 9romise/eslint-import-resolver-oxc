@@ -17,9 +17,7 @@ Inside your `eslint.config.js`, pass the resolver to `eslint-plugin-import-x`:
 ```json
 {
   "settings": {
-    "import-x/resolver": {
-      "oxc": true
-    }
+    "import-x/resolver": "oxc"
   }
 }
 ```
