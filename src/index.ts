@@ -1,3 +1,4 @@
+import { dirname } from 'node:path'
 import type { NapiResolveOptions } from 'oxc-resolver'
 import { ResolverFactory } from 'oxc-resolver'
 import { normalizeOptions } from './nomalizeOptions'
@@ -9,7 +10,8 @@ export function resolve(source: string, file: string, options: NapiResolveOption
     resolver = new ResolverFactory(options)
   }
 
-  const result = resolver.sync(file, source)
+  // https://github.com/oxc-project/oxc-resolver/blob/main/npm/README.md#api
+  const result = resolver.sync(dirname(file), source)
 
   return {
     found: !!result.path,
