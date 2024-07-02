@@ -54,7 +54,7 @@
     "lint-staged": "^15.2.7",
     "simple-git-hooks": "^2.11.1",
     "tsup": "^8.1.0",
-    "typescript": "^5.5.2"
+    "typescript": "^5.5.3"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"
