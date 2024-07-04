@@ -2,7 +2,7 @@
 
 [![npm version][npm-version-src]][npm-version-href] [![License][license-src]][license-href]
 
-A resolver based on [`oxc-resolver`](https://github.com/oxc-project/oxc-resolver) for [`eslint-plugin-import-x`](https://github.com/un-ts/eslint-plugin-import-x)
+A simply wrapped [`oxc-resolver`](https://github.com/oxc-project/oxc-resolver) for [`eslint-plugin-import-x`](https://github.com/un-ts/eslint-plugin-import-x)
 
 ## Installation
 
