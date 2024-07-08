@@ -1,4 +1,5 @@
-import { createRequire } from 'node:module'
+import fs from 'node:fs'
+import path from 'node:path'
 import { cwd } from 'node:process'
 import type { NapiResolveOptions } from 'oxc-resolver'
 
@@ -69,8 +70,8 @@ const defaultOptions: NapiResolveOptions = {
 
 export function normalizeOptions(options: NapiResolveOptions | null = {}): NapiResolveOptions {
   if (!options?.tsconfig) {
-    const configFile = createRequire(cwd()).resolve('./tsconfig.json', { paths: [cwd()] })
-    if (configFile) {
+    const configFile = path.resolve(cwd(), './tsconfig.json')
+    if (fs.existsSync(configFile)) {
       defaultOptions.tsconfig = {
         configFile,
         references: 'auto',
