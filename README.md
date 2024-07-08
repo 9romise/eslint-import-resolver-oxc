@@ -42,8 +42,8 @@ Thanks [Boshen](https://github.com/Boshen) for his work on [`oxc-resolver`](http
 
 [MIT](./LICENSE) License &copy; 2024-PRESENT [Vida Xie](https://github.com/9romise)
 
-[npm-version-src]: https://img.shields.io/npm/v/eslint-import-resolver-oxc?color=a6eae4
+[npm-version-src]: https://img.shields.io/npm/v/eslint-import-resolver-oxc?color=91ede9
 [npm-version-href]: https://npmjs.com/package/eslint-import-resolver-oxc
-[license-src]: https://img.shields.io/npm/l/eslint-import-resolver-oxc?color=a6eae4
+[license-src]: https://img.shields.io/npm/l/eslint-import-resolver-oxc?color=91ede9
 [license-href]: https://opensource.org/licenses/MIT
 [oxc-resolver-link]: [`oxc-resolver`](https://github.com/oxc-project/oxc-resolver)
