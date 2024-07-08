@@ -2,8 +2,8 @@
   "name": "eslint-import-resolver-oxc",
   "type": "module",
   "version": "0.1.5",
-  "packageManager": "pnpm@9.4.0",
-  "description": "A simply wrapped `oxc-resolver` for `eslint-plugin-import-x`",
+  "packageManager": "pnpm@9.5.0",
+  "description": "A simply wrapped `oxc-resolver` for `eslint-plugin-import-x` and `eslint-plugin-import`",
   "author": "Vida Xie<https://github.com/9romise>",
   "license": "MIT",
   "homepage": "https://github.com/9romise/eslint-import-resolver-oxc#readme",
@@ -17,6 +17,7 @@
   "keywords": [
     "eslint",
     "eslint-plugin-import",
+    "eslint-plugin-import-x",
     "eslint-import-resolver"
   ],
   "exports": {

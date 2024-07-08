@@ -2,7 +2,7 @@
 
 [![npm version][npm-version-src]][npm-version-href] [![License][license-src]][license-href]
 
-A simply wrapped [`oxc-resolver`](https://github.com/oxc-project/oxc-resolver) for [`eslint-plugin-import-x`](https://github.com/un-ts/eslint-plugin-import-x)
+A simply wrapped [`oxc-resolver`](https://github.com/oxc-project/oxc-resolver) for [`eslint-plugin-import-x`](https://github.com/un-ts/eslint-plugin-import-x) and [`eslint-plugin-import`](https://github.com/import-js/eslint-plugin-import).
 
 ## Installation
 
@@ -12,8 +12,9 @@ npm install eslint-import-resolver-oxc --save-dev
 
 ## Usage
 
-Inside your `eslint.config.js`, pass the resolver to `eslint-plugin-import-x`:
+Pass the resolver to `eslint-plugin-import-x` or `eslint-plugin-import` in your `eslint.config.js`.
 
+For `eslint-plugin-import-x`:
 ```json
 {
   "settings": {
@@ -22,9 +23,18 @@ Inside your `eslint.config.js`, pass the resolver to `eslint-plugin-import-x`:
 }
 ```
 
+For `eslint-plugin-import`:
+```json
+{
+  "settings": {
+    "import/resolver": "oxc"
+  }
+}
+```
+
 ### Options
 
-Default options see [normalizeOptions.ts](./src/nomalizeOptions.ts)
+Default options see [normalizeOptions.ts](./src/normalizeOptions.ts)
 
 More info see [oxc-resolver](https://github.com/oxc-project/oxc-resolver?tab=readme-ov-file#options)
 
@@ -36,7 +46,7 @@ Eslint is a bit slow in large projects. While I [track the performance of the ru
 
 I can't finish the project without the help of [`oxc-resolver`](https://github.com/oxc-project/oxc-resolver).
 
-Thanks [Boshen](https://github.com/Boshen) for his work on [`oxc-resolver`](https://github.com/oxc-project/oxc-resolver).
+Thanks [@Boshen](https://github.com/Boshen) for his work on [`oxc-resolver`](https://github.com/oxc-project/oxc-resolver).
 
 ## License
 
