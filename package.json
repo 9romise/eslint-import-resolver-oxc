@@ -42,7 +42,7 @@
     "eslint": "*"
   },
   "dependencies": {
-    "oxc-resolver": "^1.9.2"
+    "oxc-resolver": "^1.9.3"
   },
   "devDependencies": {
     "@types/node": "^20.14.10",
