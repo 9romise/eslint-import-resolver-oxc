@@ -36,6 +36,7 @@
     "build": "tsup",
     "prepare": "npx simple-git-hooks",
     "lint": "eslint .",
+    "test": "vitest",
     "typecheck": "tsc --noEmit",
     "release": "bumpp"
   },
@@ -55,7 +56,8 @@
     "lint-staged": "^15.2.7",
     "simple-git-hooks": "^2.11.1",
     "tsup": "^8.1.0",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.3",
+    "vitest": "^2.0.2"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"
