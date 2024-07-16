@@ -32,6 +32,9 @@
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": ">=18.6.0"
+  },
   "scripts": {
     "build": "tsup",
     "prepare": "npx simple-git-hooks",
