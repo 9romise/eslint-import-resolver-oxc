@@ -44,20 +44,20 @@
     "eslint": "*"
   },
   "dependencies": {
-    "oxc-resolver": "^1.9.3"
+    "oxc-resolver": "^1.10.1"
   },
   "devDependencies": {
     "@types/node": "^20.14.10",
     "@vida0905/eslint-config": "^0.3.0",
     "bumpp": "^9.4.1",
-    "changelogithub": "^0.13.7",
-    "eslint": "^9.6.0",
+    "changelogithub": "^0.13.9",
+    "eslint": "^9.7.0",
     "eslint-import-resolver-oxc": "file:",
     "lint-staged": "^15.2.7",
     "simple-git-hooks": "^2.11.1",
     "tsup": "^8.1.0",
     "typescript": "^5.5.3",
-    "vitest": "^2.0.2"
+    "vitest": "^2.0.3"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"
