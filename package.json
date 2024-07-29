@@ -50,7 +50,7 @@
     "oxc-resolver": "^1.10.1"
   },
   "devDependencies": {
-    "@types/node": "^20.14.10",
+    "@types/node": "^22.0.0",
     "@vida0905/eslint-config": "^0.3.0",
     "bumpp": "^9.4.1",
     "changelogithub": "^0.13.9",
