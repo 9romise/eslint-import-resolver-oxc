@@ -61,7 +61,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.14.14",
-    "@vida0905/eslint-config": "^0.3.0",
+    "@vida0905/eslint-config": "^0.4.2",
     "bumpp": "^9.4.2",
     "changelogithub": "^0.13.9",
     "eslint": "^9.8.0",
