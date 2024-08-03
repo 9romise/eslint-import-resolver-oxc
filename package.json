@@ -2,7 +2,7 @@
   "name": "eslint-import-resolver-oxc",
   "type": "module",
   "version": "0.2.0",
-  "packageManager": "pnpm@9.5.0",
+  "packageManager": "pnpm@9.6.0",
   "description": "A simply wrapped `oxc-resolver` for `eslint-plugin-import-x` and `eslint-plugin-import`",
   "author": "Vida Xie<https://github.com/9romise>",
   "license": "MIT",
@@ -44,23 +44,33 @@
     "release": "bumpp"
   },
   "peerDependencies": {
-    "eslint": "*"
+    "eslint": "*",
+    "eslint-plugin-import": "*",
+    "eslint-plugin-import-x": "*"
+  },
+  "peerDependenciesMeta": {
+    "eslint-plugin-import": {
+      "optional": true
+    },
+    "eslint-plugin-import-x": {
+      "optional": true
+    }
   },
   "dependencies": {
-    "oxc-resolver": "^1.10.1"
+    "oxc-resolver": "^1.10.2"
   },
   "devDependencies": {
-    "@types/node": "^20.14.10",
+    "@types/node": "^20.14.14",
     "@vida0905/eslint-config": "^0.3.0",
-    "bumpp": "^9.4.1",
+    "bumpp": "^9.4.2",
     "changelogithub": "^0.13.9",
-    "eslint": "^9.7.0",
+    "eslint": "^9.8.0",
     "eslint-import-resolver-oxc": "file:",
-    "lint-staged": "^15.2.7",
+    "lint-staged": "^15.2.8",
     "simple-git-hooks": "^2.11.1",
-    "tsup": "^8.1.0",
-    "typescript": "^5.5.3",
-    "vitest": "^2.0.3"
+    "tsup": "^8.2.4",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"
