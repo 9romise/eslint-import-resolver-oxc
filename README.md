@@ -1,6 +1,8 @@
 # eslint-import-resolver-oxc
 
-[![npm version][npm-version-src]][npm-version-href] [![License][license-src]][license-href]
+[![npm version][npm-version-src]][npm-version-href]
+[![npm bundle size][npm-bundle-size-src]][npm-bundle-size-href]
+[![License][license-src]][license-href]
 
 A simply wrapped [`oxc-resolver`](https://github.com/oxc-project/oxc-resolver) for [`eslint-plugin-import-x`](https://github.com/un-ts/eslint-plugin-import-x) and [`eslint-plugin-import`](https://github.com/import-js/eslint-plugin-import).
 
@@ -61,7 +63,7 @@ If you use `TypeScript`, you can set `tsconfig.configFile` to specify the path o
 
 Eslint is a bit slow in large projects. While I [track the performance of the rules](https://eslint.org/docs/latest/extend/custom-rules#profile-rule-performance), I found that `eslint-plugin-import-x` took a lot of time. I thought change a resolver might bring some improvements.
 
-## Thanks
+## Credit
 
 I can't finish the project without the help of [`oxc-resolver`](https://github.com/oxc-project/oxc-resolver).
 
@@ -73,6 +75,8 @@ Thanks [@Boshen](https://github.com/Boshen) for his work on [`oxc-resolver`](htt
 
 [npm-version-src]: https://img.shields.io/npm/v/eslint-import-resolver-oxc?color=91ede9
 [npm-version-href]: https://npmjs.com/package/eslint-import-resolver-oxc
+[npm-bundle-size-src]: https://img.shields.io/npm/unpacked-size/eslint-import-resolver-oxc?color=91ede9
+[npm-bundle-size-href]: https://npmjs.com/package/eslint-import-resolver-oxc
 [license-src]: https://img.shields.io/npm/l/eslint-import-resolver-oxc?color=91ede9
 [license-href]: https://opensource.org/licenses/MIT
 [oxc-resolver-link]: [`oxc-resolver`](https://github.com/oxc-project/oxc-resolver)
