@@ -4,3 +4,7 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    versioning-strategy: increase
+    groups:
+      deps-dev:
+        dependency-type: development
