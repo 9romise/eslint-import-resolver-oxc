@@ -4,7 +4,13 @@
 [![npm bundle size][npm-bundle-size-src]][npm-bundle-size-href]
 [![License][license-src]][license-href]
 
-A simply wrapped [`oxc-resolver`](https://github.com/oxc-project/oxc-resolver) for [`eslint-plugin-import-x`](https://github.com/un-ts/eslint-plugin-import-x) and [`eslint-plugin-import`](https://github.com/import-js/eslint-plugin-import). A good replacement for [`eslint-import-resolver-node`](https://github.com/import-js/eslint-plugin-import/tree/main/resolvers/node#readme) and [`eslint-import-resolver-typescript`](https://github.com/import-js/eslint-import-resolver-typescript).
+A simply wrapped [`oxc-resolver`](https://github.com/oxc-project/oxc-resolver) for [`eslint-plugin-import-x`](https://github.com/un-ts/eslint-plugin-import-x) and [`eslint-plugin-import`](https://github.com/import-js/eslint-plugin-import).
+
+## Feature
+
+A good replacement for [`eslint-import-resolver-node`](https://github.com/import-js/eslint-plugin-import/tree/main/resolvers/node#readme) and [`eslint-import-resolver-typescript`](https://github.com/import-js/eslint-import-resolver-typescript).
+
+You can get more info about _resolver_ in [the README of eslint-plugin-import-x](https://github.com/un-ts/eslint-plugin-import-x?tab=readme-ov-file#resolvers).
 
 ## Installation
 
@@ -15,6 +21,12 @@ npm install eslint-import-resolver-oxc --save-dev
 ## Usage
 
 Pass the resolver to `eslint-plugin-import-x` or `eslint-plugin-import` in your `eslint.config.js`.
+
+> [!IMPORTANT]
+>
+> Accroding to https://github.com/un-ts/eslint-plugin-import-x/blob/master/src/utils/resolve.ts#L183
+>
+> The settings prefix is hard coded as `import-x/` even with flat config.
 
 For `eslint-plugin-import-x`:
 ```json
@@ -30,6 +42,7 @@ or
   "settings": {
     "import-x/resolver": {
       "oxc": true
+      // other resolvers...
     }
   }
 }
@@ -58,6 +71,10 @@ Default options see [normalizeOptions.ts](./src/normalizeOptions.ts)
 More info see [oxc-resolver](https://github.com/oxc-project/oxc-resolver?tab=readme-ov-file#options)
 
 If you use `TypeScript`, you can set `tsconfig.configFile` to specify the path of `tsconfig.json`. If there is a `tsconfig.json` in the root of your workspace, it will be set automatically by default.
+
+## Who is using?
+
+- [`Rel1cx/eslint-react`](https://github.com/Rel1cx/eslint-react) - A series of composable ESLint rules for libraries and frameworks that use React as a UI runtime.
 
 ## Motivation
 
