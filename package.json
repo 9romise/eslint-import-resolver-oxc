@@ -57,7 +57,7 @@
     }
   },
   "dependencies": {
-    "oxc-resolver": "^1.10.2"
+    "oxc-resolver": "^1.11.0"
   },
   "devDependencies": {
     "@types/node": "^22.5.0",
