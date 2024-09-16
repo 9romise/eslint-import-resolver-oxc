@@ -1,7 +1,7 @@
+import type { NapiResolveOptions } from 'oxc-resolver'
 import fs from 'node:fs'
 import path from 'node:path'
 import { cwd } from 'node:process'
-import type { NapiResolveOptions } from 'oxc-resolver'
 
 // @keep-sorted
 /**

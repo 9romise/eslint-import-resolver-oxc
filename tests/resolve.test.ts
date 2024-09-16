@@ -1,6 +1,6 @@
-import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 import { cwd } from 'node:process'
+import { fileURLToPath } from 'node:url'
 import { describe, expect, it } from 'vitest'
 import { resolve } from '../src'
 
