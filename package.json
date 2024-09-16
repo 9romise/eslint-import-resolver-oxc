@@ -66,6 +66,7 @@
     "changelogithub": "^0.13.10",
     "eslint": "^9.10.0",
     "eslint-import-resolver-oxc": "file:",
+    "eslint-vitest-rule-tester": "^0.6.1",
     "lint-staged": "^15.2.10",
     "simple-git-hooks": "^2.11.1",
     "tsup": "^8.2.4",
