@@ -2,7 +2,7 @@
   "name": "eslint-import-resolver-oxc",
   "type": "module",
   "version": "0.3.0",
-  "packageManager": "pnpm@9.6.0",
+  "packageManager": "pnpm@9.10.0",
   "description": "A simply wrapped `oxc-resolver` for `eslint-plugin-import-x` and `eslint-plugin-import`",
   "author": "Vida Xie<https://github.com/9romise>",
   "license": "MIT",
@@ -37,7 +37,7 @@
   },
   "scripts": {
     "build": "tsup",
-    "prepare": "npx simple-git-hooks",
+    "prepare": "npx simple-git-hooks && pnpm build",
     "lint": "eslint .",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
