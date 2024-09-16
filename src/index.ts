@@ -1,6 +1,6 @@
-import { dirname } from 'node:path'
-import { isBuiltin } from 'node:module'
 import type { NapiResolveOptions } from 'oxc-resolver'
+import { isBuiltin } from 'node:module'
+import { dirname } from 'node:path'
 import { ResolverFactory } from 'oxc-resolver'
 import { normalizeOptions } from './normalizeOptions'
 
