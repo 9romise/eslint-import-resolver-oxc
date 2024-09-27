@@ -24,7 +24,7 @@ Pass the resolver to `eslint-plugin-import-x` or `eslint-plugin-import` in your 
 
 > [!IMPORTANT]
 >
-> Accroding to https://github.com/un-ts/eslint-plugin-import-x/blob/master/src/utils/resolve.ts#L183
+> According to https://github.com/un-ts/eslint-plugin-import-x/blob/master/src/utils/resolve.ts#L155
 >
 > The settings prefix is hard coded as `import-x/` even with flat config.
 
