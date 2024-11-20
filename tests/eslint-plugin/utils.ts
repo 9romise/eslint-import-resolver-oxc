@@ -27,7 +27,7 @@ export function run(options: ExtendedRuleTesterOptions) {
   })
 }
 
-export const FIXTURES_PATH = path.resolve('test/fixtures')
+export const FIXTURES_PATH = path.resolve(import.meta.dirname, './fixtures')
 
 export function testFilePath(relativePath = 'foo.js') {
   return path.resolve(FIXTURES_PATH, relativePath)
