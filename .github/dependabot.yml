@@ -8,3 +8,5 @@ updates:
     groups:
       deps-dev:
         dependency-type: development
+    ignore:
+      - dependency-name: oxc-resolver
