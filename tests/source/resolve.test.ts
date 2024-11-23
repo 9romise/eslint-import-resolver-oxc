@@ -40,6 +40,21 @@ describe('relative', () => {
   expectResolve('../inexistent.ts', false)
 })
 
+describe('absolute', () => {
+  // TODO
+  // expectResolve('.gitignore', true)
+  expectResolve('package.json', true)
+  expectResolve('README.md', true)
+  // TODO
+  // expectResolve('.github/dependabot.yml', true)
+  expectResolve('vitest.config.ts', true)
+  expectResolve('vitest.config', true)
+  expectResolve('src/index.ts', true)
+  expectResolve('src/index', true)
+
+  expectResolve('index.ts', false)
+})
+
 describe('alias', () => {
   expectResolve('@/index.ts', true)
   expectResolve('@/index', true)
