@@ -41,7 +41,7 @@ export function run(options: ExtendedRuleTesterOptions) {
       sourceType: 'module',
       ecmaVersion: 9,
       parserOptions: {
-        tsconfigRootDir: path.resolve('tests'),
+        tsconfigRootDir: path.dirname(testFilePath()),
         ...options.languageOptions?.parserOptions,
       },
     },
