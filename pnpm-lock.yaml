@@ -15,7 +15,7 @@ importers:
         specifier: '*'
         version: 4.4.3(eslint@9.15.0(jiti@1.21.6))(typescript@5.7.2)
       oxc-resolver:
-        specifier: ^2.0.1
+        specifier: ^2.1.1
         version: 2.1.1
     devDependencies:
       '@types/node':
