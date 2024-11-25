@@ -41,5 +41,8 @@ jobs:
       - name: Install dependencies
         run: nci
 
+      - name: Type Check
+        run: nr typecheck
+
       - name: Test
         run: nr test
