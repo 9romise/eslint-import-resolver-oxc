@@ -60,16 +60,15 @@
     "oxc-resolver": "^2.0.1"
   },
   "devDependencies": {
-    "@types/node": "^22.9.1",
+    "@types/node": "^22.9.3",
     "@vida0905/eslint-config": "^1.1.0",
     "bumpp": "^9.8.1",
     "eslint": "^9.15.0",
-    "eslint-import-resolver-oxc": "file:",
     "eslint-vitest-rule-tester": "^0.6.1",
     "lint-staged": "^15.2.10",
     "simple-git-hooks": "^2.11.1",
     "tsup": "^8.3.5",
-    "typescript": "^5.6.3",
+    "typescript": "^5.7.2",
     "vitest": "^2.1.5"
   },
   "simple-git-hooks": {

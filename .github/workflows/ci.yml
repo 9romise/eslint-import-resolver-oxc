@@ -27,6 +27,7 @@ jobs:
           fetch-depth: 0
 
       - uses: pnpm/action-setup@v4
+
       - name: Use Node.js v${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
@@ -34,8 +35,11 @@ jobs:
           registry-url: https://registry.npmjs.org/
           cache: pnpm
 
+      - name: Setup ni
+        run: npm i -g @antfu/ni
+
       - name: Install dependencies
-        run: pnpm install
+        run: nci
 
       - name: Test
-        run: npm run test
+        run: nr test

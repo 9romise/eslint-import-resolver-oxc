@@ -1,4 +1,5 @@
 import type { RuleTesterInitOptions, TestCasesOptions } from 'eslint-vitest-rule-tester'
+import type { NapiResolveOptions } from 'oxc-resolver'
 import path from 'node:path'
 import tsParser from '@typescript-eslint/parser'
 import { rules } from 'eslint-plugin-import-x'
@@ -31,7 +32,15 @@ export function run(options: ExtendedRuleTesterOptions) {
     configs: {
       settings: {
         ...(options.lang === 'js' ? {} : { 'import-x/parsers': { [require.resolve('@typescript-eslint/parser')]: ['.ts'] } }),
-        'import-x/resolver': 'oxc',
+        'import-x/resolver': {
+          oxc: {
+            tsconfig: {
+              configFile: path.resolve(FIXTURES_PATH, 'tsconfig.json'),
+              references: 'auto',
+            },
+            roots: [FIXTURES_PATH],
+          } satisfies NapiResolveOptions,
+        },
       },
     },
     ...(options.lang === 'js' ? {} : { parser: tsParser as any }),
