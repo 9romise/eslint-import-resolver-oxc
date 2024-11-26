@@ -20,7 +20,7 @@ function hashObject(obj: NapiResolveOptions): string {
 
 let cacheOptionsHash: string | undefined
 let resolver: ResolverFactory | undefined
-export function resolve(source: string, file: string, options: NapiResolveOptions | null): { found: boolean, path: string | null | undefined } {
+export function resolve(source: string, file: string, options?: NapiResolveOptions | null): { found: boolean, path: string | null | undefined } {
   if (isBuiltin(source))
     return { found: true, path: null }
 
