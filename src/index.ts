@@ -1,22 +1,9 @@
 import type { NapiResolveOptions } from 'oxc-resolver'
-import { createHash } from 'node:crypto'
 import { isBuiltin } from 'node:module'
 import { dirname } from 'node:path'
 import { ResolverFactory } from 'oxc-resolver'
 import { normalizeOptions } from './normalizeOptions'
-
-const hashCache = new WeakMap<NapiResolveOptions, string>()
-function hashObject(obj: NapiResolveOptions): string {
-  if (hashCache.has(obj)) {
-    return hashCache.get(obj)!
-  }
-  const jsonString = JSON.stringify(obj, Object.keys(obj).sort())
-
-  const hash = createHash('sha256').update(jsonString).digest('hex')
-
-  hashCache.set(obj, hash)
-  return hash
-}
+import { hashObject } from './utils'
 
 let cacheOptionsHash: string | undefined
 let resolver: ResolverFactory | undefined
