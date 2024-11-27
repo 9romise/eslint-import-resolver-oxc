@@ -1,5 +1,5 @@
 import type { NapiResolveOptions } from 'oxc-resolver'
-import { run, testFilePath } from '../utils'
+import { oxcResolver, run, testFilePath } from '../utils'
 
 run({
   rule: 'no-extraneous-dependencies',
@@ -14,7 +14,7 @@ run({
       code: 'import "@custom-internal-alias/api/service";',
       settings: {
         'import-x/resolver': {
-          oxc: {
+          [oxcResolver]: {
             alias: {
               '@custom-internal-alias': [testFilePath('internal-modules')],
             },
@@ -28,7 +28,7 @@ run({
       code: 'import jest from "alias/jest";',
       settings: {
         'import-x/resolver': {
-          oxc: {
+          [oxcResolver]: {
             alias: {
               'alias/jest': ['jest'],
             },

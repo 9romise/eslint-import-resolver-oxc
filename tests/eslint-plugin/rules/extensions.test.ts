@@ -12,7 +12,6 @@ run({
     `,
       options: ['never'],
       settings: {
-        'import-x/resolver': 'oxc',
         'import-x/external-module-folders': [
           'node_modules',
           'symlinked-module',
