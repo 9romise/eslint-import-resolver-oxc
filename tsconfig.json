@@ -20,5 +20,5 @@
     "skipLibCheck": true
   },
   "include": ["**/*.ts"],
-  "exclude": ["dist"]
+  "exclude": ["dist", "tests/eslint-plugin/fixtures/**/*"]
 }
