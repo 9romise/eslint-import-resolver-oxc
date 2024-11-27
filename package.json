@@ -64,6 +64,7 @@
     "@vida0905/eslint-config": "^1.1.0",
     "bumpp": "^9.8.1",
     "eslint": "^9.15.0",
+    "eslint-import-resolver-oxc": "file:.",
     "eslint-vitest-rule-tester": "^0.6.1",
     "lint-staged": "^15.2.10",
     "simple-git-hooks": "^2.11.1",
