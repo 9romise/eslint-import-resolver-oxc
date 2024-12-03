@@ -1,13 +1,13 @@
 import type { RuleTesterInitOptions, TestCasesOptions } from 'eslint-vitest-rule-tester'
-import type { NapiResolveOptions } from 'oxc-resolver'
 import path from 'node:path'
-import { cwd } from 'node:process'
 import tsParser from '@typescript-eslint/parser'
 import { rules } from 'eslint-plugin-import-x'
 import { run as _run } from 'eslint-vitest-rule-tester'
+import { createOxcImportResolver } from '../../src'
 
-export * from 'eslint-vitest-rule-tester'
+export { createOxcImportResolver } from '../../src'
 export { unindent as $ } from 'eslint-vitest-rule-tester'
+export * from 'eslint-vitest-rule-tester'
 
 export interface ExtendedRuleTesterOptions extends RuleTesterInitOptions, TestCasesOptions {
   lang?: 'js' | 'ts'
@@ -25,8 +25,6 @@ const defaultFilenames = {
   ts: 'tests/eslint-plugin/fixtures/foo.ts',
 }
 
-export const oxcResolver = path.resolve(cwd(), 'dist/index.cjs')
-
 export function run(options: ExtendedRuleTesterOptions) {
   return _run({
     recursive: false,
@@ -35,15 +33,15 @@ export function run(options: ExtendedRuleTesterOptions) {
     configs: {
       settings: {
         ...(options.lang === 'js' ? {} : { 'import-x/parsers': { [require.resolve('@typescript-eslint/parser')]: ['.ts'] } }),
-        'import-x/resolver': {
-          [oxcResolver]: {
+        'import-x/resolver-next': [
+          createOxcImportResolver({
             tsconfig: {
               configFile: path.resolve(FIXTURES_PATH, 'tsconfig.json'),
               references: 'auto',
             },
             roots: [FIXTURES_PATH],
-          } satisfies NapiResolveOptions,
-        },
+          }),
+        ],
       },
     },
     ...(options.lang === 'js' ? {} : { parser: tsParser as any }),

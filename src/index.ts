@@ -5,19 +5,24 @@ import { ResolverFactory } from 'oxc-resolver'
 import { normalizeOptions } from './normalizeOptions'
 import { hashObject } from './utils'
 
-let cacheOptionsHash: string | undefined
-let resolver: ResolverFactory | undefined
-export function resolve(source: string, file: string, options?: NapiResolveOptions | null): { found: boolean, path: string | null | undefined } {
+let cachedOptionsHash: string | undefined
+let cachedResolver: ResolverFactory | undefined
+
+export function resolve(source: string, file: string, options?: NapiResolveOptions | null, resolver: ResolverFactory | null = null): { found: boolean, path: string | null | undefined } {
   if (isBuiltin(source))
     return { found: true, path: null }
 
-  options ??= {}
-  const optionsHash = hashObject(options)
+  if (resolver == null) {
+    options ??= {}
+    const optionsHash = hashObject(options)
 
-  if (!resolver || cacheOptionsHash !== optionsHash) {
-    options = normalizeOptions(options)
-    resolver = new ResolverFactory(options)
-    cacheOptionsHash = optionsHash
+    if (!cachedResolver || cachedOptionsHash !== optionsHash) {
+      options = normalizeOptions(options)
+      cachedResolver = new ResolverFactory(options)
+      cachedOptionsHash = optionsHash
+    }
+
+    resolver = cachedResolver
   }
 
   // https://github.com/oxc-project/oxc-resolver/blob/main/npm/README.md#api
@@ -30,3 +35,15 @@ export function resolve(source: string, file: string, options?: NapiResolveOptio
 }
 
 export const interfaceVersion = 2
+
+export function createOxcImportResolver(options?: NapiResolveOptions | null) {
+  const resolver = new ResolverFactory(normalizeOptions(options))
+
+  return {
+    interfaceVersion: 3,
+    name: 'eslint-import-resolver-oxc',
+    resolve(source: string, file: string) {
+      return resolve(source, file, null, resolver)
+    },
+  }
+}

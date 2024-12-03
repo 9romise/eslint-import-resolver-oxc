@@ -2,7 +2,8 @@ import { run } from '../utils'
 
 function createCycleSourceError(p: string) {
   return {
-    message: `Dependency cycle via ${p}`,
+    messageId: 'cycleSource',
+    data: { source: p },
   }
 }
 
