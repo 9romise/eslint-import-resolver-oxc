@@ -36,7 +36,7 @@ export function resolve(source: string, file: string, options?: NapiResolveOptio
 
 export const interfaceVersion = 2
 
-export function createOxcResolver(options?: NapiResolveOptions | null) {
+export function createOxcImportResolver(options?: NapiResolveOptions | null) {
   const resolver = new ResolverFactory(options)
 
   return {
