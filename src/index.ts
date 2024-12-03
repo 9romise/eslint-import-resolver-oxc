@@ -5,7 +5,7 @@ import { ResolverFactory } from 'oxc-resolver'
 import { normalizeOptions } from './normalizeOptions'
 import { hashObject } from './utils'
 
-let cacheOptionsHash: string | undefined
+let cachedOptionsHash: string | undefined
 let cachedResolver: ResolverFactory | undefined
 
 export function resolve(source: string, file: string, options?: NapiResolveOptions | null, resolver: ResolverFactory | null = null): { found: boolean, path: string | null | undefined } {
@@ -16,10 +16,10 @@ export function resolve(source: string, file: string, options?: NapiResolveOptio
     options ??= {}
     const optionsHash = hashObject(options)
 
-    if (!cachedResolver || cacheOptionsHash !== optionsHash) {
+    if (!cachedResolver || cachedOptionsHash !== optionsHash) {
       options = normalizeOptions(options)
       cachedResolver = new ResolverFactory(options)
-      cacheOptionsHash = optionsHash
+      cachedOptionsHash = optionsHash
     }
 
     resolver = cachedResolver
@@ -37,7 +37,7 @@ export function resolve(source: string, file: string, options?: NapiResolveOptio
 export const interfaceVersion = 2
 
 export function createOxcImportResolver(options?: NapiResolveOptions | null) {
-  const resolver = new ResolverFactory(options)
+  const resolver = new ResolverFactory(normalizeOptions(options))
 
   return {
     interfaceVersion: 3,

@@ -1,5 +1,4 @@
-import type { NapiResolveOptions } from 'oxc-resolver'
-import { oxcResolver, run, testFilePath } from '../utils'
+import { createOxcImportResolver, run, testFilePath } from '../utils'
 
 run({
   rule: 'no-internal-modules',
@@ -19,13 +18,13 @@ run({
         },
       ],
       settings: {
-        'import-x/resolver': {
-          [oxcResolver]: {
+        'import-x/resolver-next': [
+          createOxcImportResolver({
             alias: {
               '@': [testFilePath('internal-modules')],
             },
-          } satisfies NapiResolveOptions,
-        },
+          }),
+        ],
       },
     },
   ],
