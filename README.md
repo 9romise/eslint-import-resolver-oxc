@@ -12,52 +12,80 @@ A good replacement for [`eslint-import-resolver-node`](https://github.com/import
 
 You can get more info about _resolver_ in [the README of eslint-plugin-import-x](https://github.com/un-ts/eslint-plugin-import-x?tab=readme-ov-file#resolvers).
 
-## Installation
+## Usage
+
+### Installation
 
 ```bash
 npm install eslint-import-resolver-oxc --save-dev
 ```
 
-## Usage
+### Add script for eslint.config.js
 
-Pass the resolver to `eslint-plugin-import-x` or `eslint-plugin-import` in your `eslint.config.js`.
+For [`eslint-plugin-import-x(>=4.5.0)`](https://github.com/un-ts/eslint-plugin-import-x/releases/tag/v4.5.0):
+```js
+// eslint.config.js
+export default [
+  {
+    settings: {
+      'import-x/resolver-next': [
+        createOxcImportResolver({
+          // resolver options
+        }),
+        // other resolvers
+      ]
+    }
+  }
+]
+```
 
-> [!IMPORTANT]
+For `eslint-plugin-import-x(<4.5.0)`:
+
+> [!NOTE]
 >
 > According to https://github.com/un-ts/eslint-plugin-import-x/blob/master/src/utils/resolve.ts#L155
 >
 > The settings prefix is hard coded as `import-x/` even with flat config.
 
-For `eslint-plugin-import-x`:
-```json
-{
-  "settings": {
-    "import-x/resolver": "oxc"
-  }
-}
-```
-or
-```json
-{
-  "settings": {
-    "import-x/resolver": {
-      "oxc": true
-      // other resolvers...
+```js
+// eslint.config.js
+export default [
+  {
+    settings: {
+      'import-x/resolver': 'oxc'
     }
   }
-}
+]
 ```
 or
-```json
-{
-  "settings": {
-    "import-x/resolver": {
-      "oxc": {
-        // resolver options...
+```js
+// eslint.config.js
+export default [
+  {
+    settings: {
+      'import-x/resolver': {
+        oxc: true
+        // other resolvers...
       }
     }
   }
-}
+]
+```
+or
+```js
+// eslint.config.js
+export default [
+  {
+    settings: {
+      'import-x/resolver': {
+        oxc: {
+          // resolver options...
+        },
+        // other resolvers...
+      }
+    }
+  }
+]
 ```
 
 For `eslint-plugin-import`:
