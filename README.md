@@ -1,8 +1,9 @@
 # eslint-import-resolver-oxc
 
-[![npm version][npm-version-src]][npm-version-href]
-[![npm bundle size][npm-bundle-size-src]][npm-bundle-size-href]
-[![License][license-src]][license-href]
+[![npm version][npm-version-src]][npm-url]
+[![npm download][npm-download-src]][npm-url]
+[![npm bundle size][npm-bundle-size-src]][npm-url]
+[![License][license-src]][license-url]
 
 A simply wrapped [`oxc-resolver`](https://github.com/oxc-project/oxc-resolver) for [`eslint-plugin-import-x`](https://github.com/un-ts/eslint-plugin-import-x) and [`eslint-plugin-import`](https://github.com/import-js/eslint-plugin-import).
 
@@ -103,6 +104,7 @@ If you use `TypeScript`, you can set `tsconfig.configFile` to specify the path o
 ## Who is using?
 
 - [`Rel1cx/eslint-react`](https://github.com/Rel1cx/eslint-react) - A series of composable ESLint rules for libraries and frameworks that use React as a UI runtime.
+- [`SocketDev/socket-cli`](https://github.com/SocketDev/socket-cli) - Next-gen SCA + SBOM + 0-day prevention.
 
 ## Motivation
 
@@ -119,9 +121,9 @@ Thanks [@Boshen](https://github.com/Boshen) for his work on [`oxc-resolver`](htt
 [MIT](./LICENSE) License &copy; 2024-PRESENT [Vida Xie](https://github.com/9romise)
 
 [npm-version-src]: https://img.shields.io/npm/v/eslint-import-resolver-oxc?color=91ede9
-[npm-version-href]: https://npmjs.com/package/eslint-import-resolver-oxc
+[npm-download-src]: https://img.shields.io/npm/dm/eslint-import-resolver-oxc?color=91ede9
 [npm-bundle-size-src]: https://img.shields.io/npm/unpacked-size/eslint-import-resolver-oxc?color=91ede9
-[npm-bundle-size-href]: https://npmjs.com/package/eslint-import-resolver-oxc
+[npm-url]: https://npmjs.com/package/eslint-import-resolver-oxc
 [license-src]: https://img.shields.io/npm/l/eslint-import-resolver-oxc?color=91ede9
-[license-href]: https://opensource.org/licenses/MIT
+[license-url]: https://opensource.org/licenses/MIT
 [oxc-resolver-link]: [`oxc-resolver`](https://github.com/oxc-project/oxc-resolver)
