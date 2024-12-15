@@ -59,15 +59,15 @@
     "oxc-resolver": "^2.1.1"
   },
   "devDependencies": {
-    "@types/node": "^22.10.1",
-    "@vida0905/eslint-config": "^1.1.1",
-    "eslint": "^9.16.0",
-    "eslint-vitest-rule-tester": "^0.6.1",
-    "lint-staged": "^15.2.10",
+    "@types/node": "^22.10.2",
+    "@vida0905/eslint-config": "^1.2.0",
+    "eslint": "^9.17.0",
+    "eslint-vitest-rule-tester": "^0.7.1",
+    "lint-staged": "^15.2.11",
     "simple-git-hooks": "^2.11.1",
     "tsup": "^8.3.5",
     "typescript": "^5.7.2",
-    "vitest": "^2.1.5"
+    "vitest": "^2.1.8"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"
