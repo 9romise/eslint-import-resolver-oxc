@@ -40,8 +40,7 @@
     "prepare": "npx simple-git-hooks && pnpm build",
     "lint": "eslint .",
     "test": "vitest",
-    "typecheck": "tsc --noEmit",
-    "release": "bumpp"
+    "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
     "eslint": "*",
@@ -62,7 +61,6 @@
   "devDependencies": {
     "@types/node": "^22.10.1",
     "@vida0905/eslint-config": "^1.1.1",
-    "bumpp": "^9.8.1",
     "eslint": "^9.16.0",
     "eslint-vitest-rule-tester": "^0.6.1",
     "lint-staged": "^15.2.10",
