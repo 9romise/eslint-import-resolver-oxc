@@ -68,10 +68,20 @@ const defaultOptions: NapiResolveOptions = {
   roots: [cwd()],
 }
 
+function findConfigFile(files: string[]) {
+  while (files.length) {
+    const file = files.shift()!
+    const absPath = path.resolve(cwd(), file)
+    if (fs.existsSync(absPath)) {
+      return absPath
+    }
+  }
+}
+
 export function normalizeOptions(options: NapiResolveOptions | null = {}): NapiResolveOptions {
   if (!options?.tsconfig) {
-    const configFile = path.resolve(cwd(), './tsconfig.json')
-    if (fs.existsSync(configFile)) {
+    const configFile = findConfigFile(['tsconfig.json', 'jsconfig.json'])
+    if (configFile) {
       defaultOptions.tsconfig = {
         configFile,
         references: 'auto',
