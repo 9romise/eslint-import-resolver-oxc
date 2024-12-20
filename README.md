@@ -99,7 +99,9 @@ Default options see [normalizeOptions.ts](./src/normalizeOptions.ts)
 
 More info see [oxc-resolver](https://github.com/oxc-project/oxc-resolver?tab=readme-ov-file#options)
 
-If you use `TypeScript`, you can set `tsconfig.configFile` to specify the path of `tsconfig.json`. If there is a `tsconfig.json` in the root of your workspace, it will be set automatically by default.
+#### Feature
+
+The resolver will automatically detect `jsconfig.json` and `tsconfig.json` in the root (`process.cwd()`).
 
 ## Who is using?
 
