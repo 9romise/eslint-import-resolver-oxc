@@ -55,7 +55,7 @@ describe('absolute', () => {
   expectResolve('index.ts', false)
 })
 
-describe('alias', () => {
+describe('tsconfig alias', () => {
   expectResolve('@/index.ts', true)
   expectResolve('@/index', true)
 })
