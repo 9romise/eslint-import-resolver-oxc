@@ -1,61 +1,49 @@
-import path from 'node:path'
-import { cwd } from 'node:process'
-import { fileURLToPath } from 'node:url'
-import { describe, expect, it } from 'vitest'
-import { resolve } from '../../src'
+import { run } from './utils'
 
-const __filename = fileURLToPath(import.meta.url)
+run({
+  name: 'modules',
+  valid: [
+    // builtin
+    'path',
+    'node:path',
 
-function expectResolve(source: string, found: boolean | string) {
-  it(`${source} => ${found}`, () => {
-    const result = resolve(source, __filename)
-    if (typeof found === 'string') {
-      expect(result.path).toBe(path.resolve(cwd(), found))
-    } else {
-      expect(result.found).toBe(found)
-    }
-  })
-}
-
-describe('builtin', () => {
-  expectResolve('path', true)
-  expectResolve('node:path', true)
+    // external
+    'vitest',
+  ],
+  invalid: [
+    'lodash',
+  ],
 })
 
-describe('modules', () => {
-  expectResolve('vitest', true)
-  expectResolve('lodash', false)
+run({
+  name: 'relative',
+  valid: [
+    '../../../.gitignore',
+    '../../../package.json',
+    '../../../README.md',
+    '../../../.github/dependabot.yml',
+    '../../../vitest.config.ts',
+    '../../../vitest.config',
+    '../../../src/index',
+    '../../../src',
+  ],
+  invalid: [
+    '../inexistent.ts',
+  ],
 })
 
-describe('relative', () => {
-  expectResolve('../../.gitignore', true)
-  expectResolve('../../package.json', true)
-  expectResolve('../../README.md', true)
-  expectResolve('../../.github/dependabot.yml', true)
-  expectResolve('../../vitest.config.ts', true)
-  expectResolve('../../vitest.config', true)
-  expectResolve('../../src/index', 'src/index.ts')
-  expectResolve('../../src', 'src/index.ts')
-
-  expectResolve('../inexistent.ts', false)
-})
-
-describe('absolute', () => {
-  // TODO
-  // expectResolve('.gitignore', true)
-  expectResolve('package.json', true)
-  expectResolve('README.md', true)
-  // TODO
-  // expectResolve('.github/dependabot.yml', true)
-  expectResolve('vitest.config.ts', true)
-  expectResolve('vitest.config', true)
-  expectResolve('src/index.ts', true)
-  expectResolve('src/index', true)
-
-  expectResolve('index.ts', false)
-})
-
-describe('tsconfig alias', () => {
-  expectResolve('@/index.ts', true)
-  expectResolve('@/index', true)
+run({
+  name: 'absolute',
+  valid: [
+    // '.gitignore',
+    'package.json',
+    'README.md',
+    // '.github/dependabot.yml',
+    'vitest.config.ts',
+    'src/index.ts',
+    'src/index',
+  ],
+  invalid: [
+    'inexistent.ts',
+  ],
 })
