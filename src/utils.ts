@@ -1,5 +1,8 @@
 import type { NapiResolveOptions } from 'oxc-resolver'
 import { createHash } from 'node:crypto'
+import { existsSync } from 'node:fs'
+import { resolve } from 'node:path'
+import { cwd } from 'node:process'
 
 export const hashCache = new WeakMap<NapiResolveOptions, string>()
 
@@ -28,4 +31,18 @@ export function hashObject(obj: NapiResolveOptions): string {
   const hash = generateHash(obj)
   hashCache.set(obj, hash)
   return hash
+}
+
+export function detectFile(files: string[]) {
+  for (const file of files) {
+    const absPath = resolve(cwd(), file)
+    if (existsSync(absPath)) {
+      return absPath
+    }
+  }
+}
+
+export function log(...args: any[]) {
+  // eslint-disable-next-line no-console
+  return console.log('[eslint-import-resolver-oxc]: ', ...args)
 }

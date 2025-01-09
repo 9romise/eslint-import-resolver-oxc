@@ -1,4 +1,4 @@
-import type { NapiResolveOptions } from 'oxc-resolver'
+import type { OxcResolverOptions } from '@/typings'
 import { resolve } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import { createOxcImportResolver } from '../../src/index'
@@ -17,15 +17,15 @@ interface InvalidTestCase extends TestCaseBase {
 
 interface Options {
   name: string
-  options?: NapiResolveOptions
+  options?: OxcResolverOptions
   valid: (ValidTestCase | string)[]
   invalid: (InvalidTestCase | string)[]
 }
 
 const defaultFileName = resolve(import.meta.dirname, 'fixtrues', 'index.ts')
 
-export function run({ name, options: config, valid, invalid }: Options) {
-  const resolver = createOxcImportResolver(config)
+export async function run({ name, options: config, valid, invalid }: Options) {
+  const resolver = await createOxcImportResolver(config)
 
   function normalizeCases<T extends ValidTestCase | InvalidTestCase>(cases: (T | string)[]) {
     return cases.map((_case) => {

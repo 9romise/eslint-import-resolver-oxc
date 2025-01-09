@@ -1,7 +1,7 @@
-import type { NapiResolveOptions } from 'oxc-resolver'
-import fs from 'node:fs'
-import path from 'node:path'
+import type { OxcResolverOptions } from './typings'
 import { cwd } from 'node:process'
+import { isPlainObject, mergeWith } from 'es-toolkit'
+import { detectFile } from './utils'
 
 // @keep-sorted
 /**
@@ -9,7 +9,7 @@ import { cwd } from 'node:process'
  * https://github.com/import-js/eslint-import-resolver-typescript/blob/master/src/index.ts
  * https://github.com/rolldown/rolldown/blob/main/crates/rolldown_resolver/src/resolver.rs
  */
-const defaultOptions: NapiResolveOptions = {
+const defaultOptions: OxcResolverOptions = {
   aliasFields: [
     ['browser'],
   ],
@@ -68,19 +68,23 @@ const defaultOptions: NapiResolveOptions = {
   roots: [cwd()],
 }
 
-function findConfigFile(files: string[]) {
-  while (files.length) {
-    const file = files.shift()!
-    const absPath = path.resolve(cwd(), file)
-    if (fs.existsSync(absPath)) {
-      return absPath
+export function mergeOptions(a?: OxcResolverOptions | null, b?: OxcResolverOptions | null): OxcResolverOptions {
+  a ??= {}
+  b ??= {}
+
+  function mergeFunc(objVal: any, srcVal: any) {
+    if (Array.isArray(objVal) || Array.isArray(srcVal)) {
+      return objVal.concat(srcVal)
+    } else if (isPlainObject(objVal) && isPlainObject(srcVal)) {
+      return mergeWith(objVal, srcVal, mergeFunc)
     }
   }
+  return mergeWith(a, b, mergeFunc)
 }
 
-export function normalizeOptions(options: NapiResolveOptions | null = {}): NapiResolveOptions {
+export function normalizeOptions(options: OxcResolverOptions = {}): OxcResolverOptions {
   if (!options?.tsconfig) {
-    const configFile = findConfigFile(['tsconfig.json', 'jsconfig.json'])
+    const configFile = detectFile(['tsconfig.json', 'jsconfig.json'])
     if (configFile) {
       defaultOptions.tsconfig = {
         configFile,
@@ -88,6 +92,7 @@ export function normalizeOptions(options: NapiResolveOptions | null = {}): NapiR
       }
     }
   }
+
   return {
     ...defaultOptions,
     ...options,

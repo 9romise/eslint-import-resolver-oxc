@@ -2,7 +2,7 @@
   "name": "eslint-import-resolver-oxc",
   "type": "module",
   "version": "0.8.0",
-  "packageManager": "pnpm@9.15.2",
+  "packageManager": "pnpm@9.15.3",
   "description": "A simply wrapped `oxc-resolver` for `eslint-plugin-import-x` and `eslint-plugin-import`",
   "author": "Vida Xie<https://github.com/9romise>",
   "license": "MIT",
@@ -45,13 +45,17 @@
   "peerDependencies": {
     "eslint": "*",
     "eslint-plugin-import": "*",
-    "eslint-plugin-import-x": "*"
+    "eslint-plugin-import-x": "*",
+    "vite": "*"
   },
   "peerDependenciesMeta": {
     "eslint-plugin-import": {
       "optional": true
     },
     "eslint-plugin-import-x": {
+      "optional": true
+    },
+    "vite": {
       "optional": true
     }
   },
@@ -61,6 +65,7 @@
   "devDependencies": {
     "@types/node": "^22.10.4",
     "@vida0905/eslint-config": "^1.2.0",
+    "es-toolkit": "^1.31.0",
     "eslint": "^9.17.0",
     "eslint-vitest-rule-tester": "^0.7.1",
     "lint-staged": "^15.3.0",
