@@ -97,11 +97,54 @@ Replace `import-x/resolver` with `import/resolver` in the object above.
 
 Default options see [normalizeOptions.ts](./src/normalizeOptions.ts)
 
-More info see [oxc-resolver](https://github.com/oxc-project/oxc-resolver?tab=readme-ov-file#options)
+#### bundlerConfig (experimental)
 
-#### Feature
+This option can be a string or an object.
 
-The resolver will automatically detect `jsconfig.json` and `tsconfig.json` in the root (`process.cwd()`).
+String option:
+
+the path of the bundler's config file.
+
+Object option:
+
+- type: the type of the bundler.
+- path: the config of the bundler.
+
+If only the `type` is specified, the configuration file in the root directory (`cwd`) will be automatically detected, similar to how `tsconfig` is handled.
+
+If only the `path` is specified, the`type` will be inferred based on the filename.
+
+> [!NOTE]
+>
+> If your configuration file uses ESM, the bundler option might not work in earlier Node.js versions (<22).
+>
+> You can use the transform method (e.g., `transformViteConfig`) to transform your bundler configuration.
+>
+> For example:
+
+``` js
+// eslint.config.js
+import { createOxcImportResolver, transformViteConfig } from 'eslint-import-resolver-oxc'
+import viteConfig from './vite.config.js'
+
+export default [
+  {
+    settings: {
+      'import-x/resolver-next': [
+        createOxcImportResolver({
+          ...transformViteConfig(viteConfig)
+        }),
+      ]
+    }
+  }
+]
+```
+
+#### others
+
+The `jsconfig.json` and `tsconfig.json` in the root directory (`cwd`) will automatically detected.
+
+More options see [oxc-resolver](https://github.com/oxc-project/oxc-resolver?tab=readme-ov-file#options)
 
 ## Who is using?
 
