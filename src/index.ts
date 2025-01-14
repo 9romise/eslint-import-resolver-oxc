@@ -4,11 +4,10 @@ import { isBuiltin } from 'node:module'
 import { dirname } from 'node:path'
 import { ResolverFactory } from 'oxc-resolver'
 import { getBundlerConfig } from './bundler'
-import { mergeOptions, normalizeOptions } from './normalizeOptions'
+import { normalizeOptions } from './normalizeOptions'
 import { hashObject } from './utils'
 
 export { transformViteConfig } from './bundler/vite'
-export { mergeOptions } from './normalizeOptions'
 
 let cachedOptionsHash: string | undefined
 let cachedResolver: ResolverFactory | undefined
@@ -47,7 +46,10 @@ export function createOxcImportResolver(options?: OxcResolverOptions | NapiResol
   if (options && Object.prototype.hasOwnProperty.call(options, 'bundlerConfig')) {
     return new Promise((resolve) => {
       getBundlerConfig((options as OxcResolverOptions).bundlerConfig).then((bundlerOptions) => {
-        const resolver = createResolver(mergeOptions(options, bundlerOptions))
+        const resolver = createResolver({
+          ...bundlerOptions,
+          ...options,
+        })
         resolve(resolver)
       })
     })

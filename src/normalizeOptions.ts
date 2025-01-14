@@ -1,6 +1,5 @@
 import type { OxcResolverOptions } from './typings'
 import { cwd } from 'node:process'
-import { isPlainObject, mergeWith } from 'es-toolkit'
 import { detectFile } from './utils'
 
 // @keep-sorted
@@ -66,20 +65,6 @@ const defaultOptions: OxcResolverOptions = {
     'jsnext:main',
   ],
   roots: [cwd()],
-}
-
-export function mergeOptions(a?: OxcResolverOptions | null, b?: OxcResolverOptions | null): OxcResolverOptions {
-  a ??= {}
-  b ??= {}
-
-  function mergeFunc(objVal: any, srcVal: any) {
-    if (Array.isArray(objVal) || Array.isArray(srcVal)) {
-      return objVal.concat(srcVal)
-    } else if (isPlainObject(objVal) && isPlainObject(srcVal)) {
-      return mergeWith(objVal, srcVal, mergeFunc)
-    }
-  }
-  return mergeWith(a, b, mergeFunc)
 }
 
 export function normalizeOptions(options: OxcResolverOptions = {}): OxcResolverOptions {
