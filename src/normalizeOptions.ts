@@ -1,4 +1,4 @@
-import type { OxcResolverOptions } from './typings'
+import type { NapiResolveOptions } from 'oxc-resolver'
 import { cwd } from 'node:process'
 import { detectFile } from './utils'
 
@@ -8,7 +8,7 @@ import { detectFile } from './utils'
  * https://github.com/import-js/eslint-import-resolver-typescript/blob/master/src/index.ts
  * https://github.com/rolldown/rolldown/blob/main/crates/rolldown_resolver/src/resolver.rs
  */
-const defaultOptions: OxcResolverOptions = {
+const defaultOptions: NapiResolveOptions = {
   aliasFields: [
     ['browser'],
   ],
@@ -67,7 +67,7 @@ const defaultOptions: OxcResolverOptions = {
   roots: [cwd()],
 }
 
-export function normalizeOptions(options: OxcResolverOptions = {}): OxcResolverOptions {
+export function normalizeOptions(options: NapiResolveOptions = {}): NapiResolveOptions {
   if (!options?.tsconfig) {
     const configFile = detectFile(['tsconfig.json', 'jsconfig.json'])
     if (configFile) {
