@@ -1,4 +1,5 @@
 import type { BundlerConfigTransformer, BundlerOption, SupportedBundler } from '@/typings'
+import { existsSync } from 'node:fs'
 import { basename, resolve } from 'node:path'
 import { cwd } from 'node:process'
 import { detectFile, log } from '@/utils'
@@ -41,8 +42,8 @@ export async function getBundlerConfig(options?: BundlerOption | null) {
     path = detectFile(extensions.map((ext) => `${filename}.${ext}`))
   }
 
-  if (!path) {
-    log(`cannot find "${type}" config`)
+  if (!path || !existsSync(path)) {
+    log(`cannot find ${path}`)
     return {}
   }
 

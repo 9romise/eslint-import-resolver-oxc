@@ -1,13 +1,10 @@
 import type { BundlerConfigTransformer } from '@/typings'
 import type { NapiResolveOptions } from 'oxc-resolver'
 import type { Alias } from 'vite'
-import { loadConfigFromFile } from 'vite'
+import { resolveConfig } from 'vite'
 
 export async function transformViteConfig(path: string): Promise<NapiResolveOptions> {
-  const { config } = await loadConfigFromFile({ command: 'build', mode: 'production' }, path) || {}
-
-  if (!config?.resolve)
-    return {}
+  const config = await resolveConfig({ configFile: path }, 'build', 'production', 'production')
 
   const { alias } = config.resolve
 
