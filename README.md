@@ -40,7 +40,8 @@ export default [
 ]
 ```
 
-For `eslint-plugin-import-x(<4.5.0)`:
+<details>
+<summary>For `eslint-plugin-import-x(<4.5.0)`:</summary>
 
 > [!NOTE]
 >
@@ -88,6 +89,7 @@ export default [
   }
 ]
 ```
+</details>
 
 For `eslint-plugin-import`:
 
@@ -97,7 +99,7 @@ Replace `import-x/resolver` with `import/resolver` in the object above.
 
 Default options see [normalizeOptions.ts](./src/normalizeOptions.ts)
 
-#### bundlerConfig (experimental)
+#### bundlerConfig (experimental, only supported in `async` function)
 
 This option can be a string or an object.
 
@@ -114,25 +116,16 @@ If only the `type` is specified, the configuration file in the root directory (`
 
 If only the `path` is specified, the`type` will be inferred based on the filename.
 
-> [!NOTE]
->
-> If your configuration file uses ESM, the bundler option might not work in earlier Node.js versions (<22).
->
-> You can use the transform method (e.g., `transformViteConfig`) to transform your bundler configuration.
->
-> For example:
-
 ``` js
 // eslint.config.js
 import { createOxcImportResolver, transformViteConfig } from 'eslint-import-resolver-oxc'
-import viteConfig from './vite.config.js'
 
 export default [
   {
     settings: {
       'import-x/resolver-next': [
-        createOxcImportResolver({
-          ...transformViteConfig(viteConfig)
+        await createOxcImportResolver({
+          bundlerConfig: 'vite.config.ts',
         }),
       ]
     }
