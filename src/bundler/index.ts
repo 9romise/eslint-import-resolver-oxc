@@ -42,11 +42,19 @@ export async function getBundlerConfig(options?: BundlerOption | null) {
     path = detectFile(extensions.map((ext) => `${filename}.${ext}`))
   }
 
-  if (!path || !existsSync(path)) {
+  if (!path) {
     log(`cannot find ${path}`)
     return {}
   }
 
   path = resolve(cwd(), path)
-  return await config.transformConfig(path)
+
+  if (!existsSync(path)) {
+    log(`cannot find ${path}`)
+    return {}
+  }
+  return await config.transformConfig(path).catch((err) => {
+    log(err)
+    return {}
+  })
 }
