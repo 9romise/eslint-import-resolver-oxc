@@ -40,7 +40,8 @@ export default [
 ]
 ```
 
-For `eslint-plugin-import-x(<4.5.0)`:
+<details>
+<summary>For `eslint-plugin-import-x(<4.5.0)`:</summary>
 
 > [!NOTE]
 >
@@ -88,6 +89,7 @@ export default [
   }
 ]
 ```
+</details>
 
 For `eslint-plugin-import`:
 
@@ -97,11 +99,45 @@ Replace `import-x/resolver` with `import/resolver` in the object above.
 
 Default options see [normalizeOptions.ts](./src/normalizeOptions.ts)
 
-More info see [oxc-resolver](https://github.com/oxc-project/oxc-resolver?tab=readme-ov-file#options)
+#### bundlerConfig (experimental, only supported in `async` function)
 
-#### Feature
+This option can be a string or an object.
 
-The resolver will automatically detect `jsconfig.json` and `tsconfig.json` in the root (`process.cwd()`).
+String option:
+
+the path of the bundler's config file.
+
+Object option:
+
+- type: the type of the bundler.
+- path: the config of the bundler.
+
+If only the `type` is specified, the configuration file in the root directory (`cwd`) will be automatically detected, similar to how `tsconfig` is handled.
+
+If only the `path` is specified, the`type` will be inferred based on the filename.
+
+``` js
+// eslint.config.js
+import { createOxcImportResolver, transformViteConfig } from 'eslint-import-resolver-oxc'
+
+export default [
+  {
+    settings: {
+      'import-x/resolver-next': [
+        await createOxcImportResolver({
+          bundlerConfig: 'vite.config.ts',
+        }),
+      ]
+    }
+  }
+]
+```
+
+#### others
+
+The `jsconfig.json` and `tsconfig.json` in the root directory (`cwd`) will automatically detected.
+
+More options see [oxc-resolver](https://github.com/oxc-project/oxc-resolver?tab=readme-ov-file#options)
 
 ## Who is using?
 

@@ -1,7 +1,6 @@
 import type { NapiResolveOptions } from 'oxc-resolver'
-import fs from 'node:fs'
-import path from 'node:path'
 import { cwd } from 'node:process'
+import { detectFile } from './utils'
 
 // @keep-sorted
 /**
@@ -68,19 +67,9 @@ const defaultOptions: NapiResolveOptions = {
   roots: [cwd()],
 }
 
-function findConfigFile(files: string[]) {
-  while (files.length) {
-    const file = files.shift()!
-    const absPath = path.resolve(cwd(), file)
-    if (fs.existsSync(absPath)) {
-      return absPath
-    }
-  }
-}
-
-export function normalizeOptions(options: NapiResolveOptions | null = {}): NapiResolveOptions {
+export function normalizeOptions(options: NapiResolveOptions = {}): NapiResolveOptions {
   if (!options?.tsconfig) {
-    const configFile = findConfigFile(['tsconfig.json', 'jsconfig.json'])
+    const configFile = detectFile(['tsconfig.json', 'jsconfig.json'])
     if (configFile) {
       defaultOptions.tsconfig = {
         configFile,
@@ -88,6 +77,7 @@ export function normalizeOptions(options: NapiResolveOptions | null = {}): NapiR
       }
     }
   }
+
   return {
     ...defaultOptions,
     ...options,
