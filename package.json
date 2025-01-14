@@ -66,7 +66,7 @@
     "@types/node": "^22.10.4",
     "@vida0905/eslint-config": "^1.2.0",
     "eslint": "^9.17.0",
-    "eslint-vitest-rule-tester": "^0.7.1",
+    "eslint-vitest-rule-tester": "^1.0.0",
     "lint-staged": "^15.3.0",
     "simple-git-hooks": "^2.11.1",
     "tsup": "^8.3.5",
