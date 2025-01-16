@@ -1,10 +1,33 @@
 import type { BundlerConfigTransformer } from '@/typings'
 import type { Configuration, WebpackOptionsNormalized } from 'webpack'
 import type { IWebpackCLI } from 'webpack-cli'
+import { mergeOptions } from '@/utils'
 import { isBoolean, isNil, isString } from 'es-toolkit'
 import { EnforceExtension, type NapiResolveOptions } from 'oxc-resolver'
 import webpack from 'webpack'
 import WebpackCLI from 'webpack-cli'
+
+function normalizeOptions(options: WebpackOptionsNormalized) {
+  if (options.resolve.byDependency) {
+    Object.values(options.resolve.byDependency).forEach((opt) => {
+      options.resolve = mergeOptions(options.resolve, opt)
+    })
+  }
+
+  for (const key in options.resolve) {
+    const _key = key as keyof WebpackOptionsNormalized['resolve']
+    if (Object.prototype.hasOwnProperty.call(options.resolve, _key)) {
+      const val = options.resolve[_key]
+      if (Array.isArray(val)) {
+        // @ts-expect-error safe type
+        options.resolve[_key]
+          = val.filter((v) => v !== '...')
+      }
+    }
+  }
+
+  return options
+}
 
 export async function transformWebpackConfig(path: string): Promise<NapiResolveOptions> {
   const cli = new (WebpackCLI as new () => IWebpackCLI)()
@@ -15,10 +38,7 @@ export async function transformWebpackConfig(path: string): Promise<NapiResolveO
   const options = webpack.config.getNormalizedWebpackOptions(webpackConfig.options as Configuration)
   webpack.config.applyWebpackOptionsDefaults(options)
 
-  // TODO: support `byDependency`
-  options.resolve = webpack.util.cleverMerge(options.resolve, options.resolve.byDependency?.esm)
-
-  const config = options
+  const config = normalizeOptions(options)
   if (!config || !config.resolve)
     return {}
 
