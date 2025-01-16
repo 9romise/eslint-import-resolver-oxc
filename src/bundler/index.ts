@@ -4,9 +4,11 @@ import { basename, resolve } from 'node:path'
 import { cwd } from 'node:process'
 import { detectFile, log } from '@/utils'
 import vite from './vite'
+import webpack from './webpack'
 
 const bundlerConfig: Record<SupportedBundler, BundlerConfigTransformer> = {
   vite,
+  webpack,
 }
 
 export async function getBundlerConfig(options?: BundlerOption | null) {
@@ -39,7 +41,9 @@ export async function getBundlerConfig(options?: BundlerOption | null) {
 
   if (!path) {
     const { filename, extensions } = config
-    path = detectFile(extensions.map((ext) => `${filename}.${ext}`))
+    path = detectFile(
+      filename.flatMap((file) => extensions.map((ext) => `${file}.${ext}`)),
+    )
   }
 
   if (!path) {

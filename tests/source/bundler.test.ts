@@ -14,3 +14,17 @@ await run({
   ],
   invalid: [],
 })
+
+await run({
+  name: 'webpack',
+  options: {
+    bundlerConfig: {
+      type: 'webpack',
+      path: resolve(import.meta.dirname, './fixtures/webpack.config.js'),
+    },
+  },
+  valid: [
+    '#test/a',
+  ],
+  invalid: [],
+})

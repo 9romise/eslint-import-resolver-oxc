@@ -33,7 +33,7 @@ export async function transformViteConfig(path: string): Promise<NapiResolveOpti
 }
 
 export default {
-  filename: 'vite.config',
+  filename: ['vite.config'],
   extensions: ['ts', 'js', 'mts', 'mjs', 'cts', 'cjs'],
   transformConfig: transformViteConfig,
 } as BundlerConfigTransformer

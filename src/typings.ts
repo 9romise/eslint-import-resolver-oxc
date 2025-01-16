@@ -6,7 +6,7 @@ export interface ImportResolver {
   resolve: (source: string, file: string) => { found: boolean, path: string | null | undefined }
 }
 
-export type SupportedBundler = 'vite'
+export type SupportedBundler = 'vite' | 'webpack'
 
 export type BundlerOption = string | {
   type?: SupportedBundler
@@ -14,7 +14,7 @@ export type BundlerOption = string | {
 }
 
 export interface BundlerConfigTransformer {
-  filename: string
+  filename: string[]
   extensions: string[]
   transformConfig: (conf: any) => Promise<NapiResolveOptions>
 }
