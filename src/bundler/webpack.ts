@@ -29,6 +29,48 @@ function normalizeOptions(options: WebpackOptionsNormalized) {
   return options
 }
 
+type WebpackResolveOptions = WebpackOptionsNormalized['resolve']
+
+function transformAlias(alias: WebpackResolveOptions['alias']): NapiResolveOptions['alias'] {
+  if (isNil(alias))
+    return undefined
+  function resolveAliasOptions(val: string | false | string[]): (string | null)[] {
+    if (isBoolean(val)) {
+      return [null]
+    } else if (isString(val)) {
+      return [val]
+    } else {
+      return val
+    }
+  }
+
+  const _alias: NapiResolveOptions['alias'] = {}
+  if (Array.isArray(alias)) {
+    alias.forEach(({ alias, name }) => {
+      _alias[name] = resolveAliasOptions(alias)
+    })
+  } else if (alias) {
+    for (const name in alias) {
+      _alias[name] = resolveAliasOptions(alias[name])
+    }
+  }
+  return _alias
+}
+
+function transformMainFields(mainFields: WebpackResolveOptions['mainFields']): NapiResolveOptions['mainFields'] {
+  return mainFields?.flat()
+}
+
+function transformRestrictions(restrictions: WebpackResolveOptions['restrictions']): NapiResolveOptions['restrictions'] {
+  return restrictions?.map((val) => {
+    if (isString(val)) {
+      return { path: val }
+    } else {
+      return { regex: val.toString() }
+    }
+  })
+}
+
 export async function transformWebpackConfig(path: string): Promise<NapiResolveOptions> {
   const cli = new (WebpackCLI as new () => IWebpackCLI)()
   const webpackConfig = await cli.loadConfig({
@@ -41,48 +83,6 @@ export async function transformWebpackConfig(path: string): Promise<NapiResolveO
   const config = normalizeOptions(options)
   if (!config || !config.resolve)
     return {}
-
-  type WebpackResolveOptions = WebpackOptionsNormalized['resolve']
-
-  function transformAlias(alias: WebpackResolveOptions['alias']): NapiResolveOptions['alias'] {
-    if (isNil(alias))
-      return undefined
-    function resolveAliasOptions(val: string | false | string[]): (string | null)[] {
-      if (isBoolean(val)) {
-        return [null]
-      } else if (isString(val)) {
-        return [val]
-      } else {
-        return val
-      }
-    }
-
-    const _alias: NapiResolveOptions['alias'] = {}
-    if (Array.isArray(alias)) {
-      alias.forEach(({ alias, name }) => {
-        _alias[name] = resolveAliasOptions(alias)
-      })
-    } else if (alias) {
-      for (const name in alias) {
-        _alias[name] = resolveAliasOptions(alias[name])
-      }
-    }
-    return _alias
-  }
-
-  function transformMainFields(mainFields: WebpackResolveOptions['mainFields']): NapiResolveOptions['mainFields'] {
-    return mainFields?.flat()
-  }
-
-  function transformRestrictions(restrictions: WebpackResolveOptions['restrictions']): NapiResolveOptions['restrictions'] {
-    return restrictions?.map((val) => {
-      if (isString(val)) {
-        return { path: val }
-      } else {
-        return { regex: val.toString() }
-      }
-    })
-  }
 
   return {
     alias: transformAlias(config.resolve.alias),
