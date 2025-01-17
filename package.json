@@ -46,7 +46,9 @@
     "eslint": "*",
     "eslint-plugin-import": "*",
     "eslint-plugin-import-x": "*",
-    "vite": "*"
+    "vite": "*",
+    "webpack": "*",
+    "webpack-cli": "*"
   },
   "peerDependenciesMeta": {
     "eslint-plugin-import": {
@@ -57,6 +59,12 @@
     },
     "vite": {
       "optional": true
+    },
+    "webpack": {
+      "optional": true
+    },
+    "webpack-cli": {
+      "optional": true
     }
   },
   "dependencies": {
@@ -65,6 +73,7 @@
   "devDependencies": {
     "@types/node": "^22.10.6",
     "@vida0905/eslint-config": "^1.2.1",
+    "es-toolkit": "^1.31.0",
     "eslint": "^9.18.0",
     "eslint-vitest-rule-tester": "^1.0.0",
     "lint-staged": "^15.3.0",

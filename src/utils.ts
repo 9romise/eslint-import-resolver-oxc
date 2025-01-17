@@ -3,6 +3,7 @@ import { createHash } from 'node:crypto'
 import { existsSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { cwd } from 'node:process'
+import { cloneDeep, isPlainObject, mergeWith } from 'es-toolkit'
 
 export const hashCache = new WeakMap<NapiResolveOptions, string>()
 
@@ -40,6 +41,24 @@ export function detectFile(files: string[]) {
       return absPath
     }
   }
+}
+
+export function mergeOptions(a: object, b: object) {
+  if (!a)
+    return cloneDeep(b)
+  if (!b)
+    return cloneDeep(a)
+  const res = cloneDeep(a)
+
+  function mergeFunc(tar: any, src: any) {
+    if (Array.isArray(tar) && Array.isArray(src)) {
+      return [...new Set(tar.concat(src))]
+    } else if (isPlainObject(tar) && isPlainObject(src)) {
+      return mergeWith(tar, src, mergeFunc)
+    }
+  }
+
+  return mergeWith(res, b, mergeFunc)
 }
 
 export function log(...args: any[]) {
