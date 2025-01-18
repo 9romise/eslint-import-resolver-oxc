@@ -7,6 +7,6 @@ export default {
   resolve: {
     alias: {
       '#test': path.resolve(__dirname, 'src'),
-    }
-  }
+    },
+  },
 }
