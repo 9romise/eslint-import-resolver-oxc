@@ -1,6 +1,6 @@
-import type { BundlerConfigTransformer } from '@/typings'
 import type { WebpackOptionsNormalized } from 'webpack'
 import type { IWebpackCLI } from 'webpack-cli'
+import type { BundlerConfigTransformer } from './index'
 import { log, mergeOptions } from '@/utils'
 import { isBoolean, isNil, isString } from 'es-toolkit'
 import { EnforceExtension, type NapiResolveOptions } from 'oxc-resolver'
@@ -156,4 +156,4 @@ export default {
   filename: ['webpack.config', '.webpack/webpack.config', '.webpack/webpackfile'],
   extensions: ['ts', 'js', 'mts', 'mjs', 'cts', 'cjs'],
   transformConfig: transformWebpackConfig,
-} as BundlerConfigTransformer<'webpack'>
+} as BundlerConfigTransformer

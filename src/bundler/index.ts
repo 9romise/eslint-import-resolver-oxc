@@ -1,4 +1,5 @@
-import type { BundlerConfigTransformer, BundlerOption, SupportedBundler } from '@/typings'
+import type { OxcResolverOptions } from '@/typings'
+import type { NapiResolveOptions } from 'oxc-resolver'
 import { existsSync } from 'node:fs'
 import { basename, resolve } from 'node:path'
 import { cwd } from 'node:process'
@@ -6,12 +7,20 @@ import { detectFile, log } from '@/utils'
 import vite from './vite'
 import webpack from './webpack'
 
-const bundlerConfig: Record<SupportedBundler, BundlerConfigTransformer> = {
+const bundlerConfig = {
   vite,
   webpack,
 }
 
-export async function getBundlerConfig(options?: BundlerOption | null) {
+export type SupportedBundler = keyof typeof bundlerConfig
+
+export interface BundlerConfigTransformer {
+  filename: string[]
+  extensions: string[]
+  transformConfig: (path: string, options?: any) => Promise<NapiResolveOptions>
+}
+
+export async function getBundlerConfig(options?: OxcResolverOptions['bundlerConfig'] | null) {
   if (options == null)
     return {}
 

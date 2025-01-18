@@ -1,6 +1,6 @@
-import type { BundlerConfigTransformer } from '@/typings'
 import type { NapiResolveOptions } from 'oxc-resolver'
 import type { Alias } from 'vite'
+import type { BundlerConfigTransformer } from './index'
 import { resolveConfig } from 'vite'
 
 export interface ViteTranformerOptions {}
@@ -38,4 +38,4 @@ export default {
   filename: ['vite.config'],
   extensions: ['ts', 'js', 'mts', 'mjs', 'cts', 'cjs'],
   transformConfig: transformViteConfig,
-} as BundlerConfigTransformer<'vite'>
+} as BundlerConfigTransformer
