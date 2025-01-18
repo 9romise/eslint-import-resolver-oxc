@@ -111,6 +111,7 @@ Object option:
 
 - type: the type of the bundler.
 - path: the config of the bundler.
+- options: some special options for bundler config.
 
 If only the `type` is specified, the configuration file in the root directory (`cwd`) will be automatically detected, similar to how `tsconfig` is handled.
 
