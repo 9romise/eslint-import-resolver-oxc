@@ -57,7 +57,7 @@ export async function getBundlerConfig(options?: BundlerOption | null) {
     log(`cannot find ${path}`)
     return {}
   }
-  return await config.transformConfig(path).catch((err) => {
+  return await config.transformConfig(path, options?.options).catch((err) => {
     log(err)
     return {}
   })

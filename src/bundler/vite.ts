@@ -3,6 +3,8 @@ import type { NapiResolveOptions } from 'oxc-resolver'
 import type { Alias } from 'vite'
 import { resolveConfig } from 'vite'
 
+export interface ViteTranformerOptions {}
+
 export async function transformViteConfig(path: string): Promise<NapiResolveOptions> {
   const config = await resolveConfig({ configFile: path }, 'build', 'production', 'production')
 
@@ -36,4 +38,4 @@ export default {
   filename: ['vite.config'],
   extensions: ['ts', 'js', 'mts', 'mjs', 'cts', 'cjs'],
   transformConfig: transformViteConfig,
-} as BundlerConfigTransformer
+} as BundlerConfigTransformer<'vite'>

@@ -1,7 +1,7 @@
 import type { BundlerConfigTransformer } from '@/typings'
-import type { Configuration, WebpackOptionsNormalized } from 'webpack'
+import type { WebpackOptionsNormalized } from 'webpack'
 import type { IWebpackCLI } from 'webpack-cli'
-import { mergeOptions } from '@/utils'
+import { log, mergeOptions } from '@/utils'
 import { isBoolean, isNil, isString } from 'es-toolkit'
 import { EnforceExtension, type NapiResolveOptions } from 'oxc-resolver'
 import webpack from 'webpack'
@@ -75,13 +75,49 @@ function transformRestrictions(restrictions: WebpackResolveOptions['restrictions
   })
 }
 
-export async function transformWebpackConfig(path: string): Promise<NapiResolveOptions> {
+export interface WebpackTransformerOptions {
+  /** only take effect when there are multiple configurations */
+  merge?: boolean
+  /** only take effect when there are multiple configurations */
+  configName?: string
+}
+
+export async function transformWebpackConfig(path: string, _options: WebpackTransformerOptions = {}): Promise<NapiResolveOptions> {
   const cli = new (WebpackCLI as new () => IWebpackCLI)()
   const webpackConfig = await cli.loadConfig({
+    nodeEnv: 'production',
     config: [path],
   })
+
+  // https://github.com/webpack/webpack-cli/blob/master/packages/webpack-cli/src/webpack-cli.ts#L2112
+  if (Array.isArray(webpackConfig.options)) {
+    if (_options.merge) {
+      if (webpackConfig.options.length === 1) {
+        webpackConfig.options = webpackConfig.options[0]
+      } else {
+        const merge = await cli.tryRequireThenImport('webpack-merge', false)
+
+        webpackConfig.options = webpackConfig.options.reduce(
+          // @ts-expect-error safe type
+          (acc, options) => merge(acc, options),
+          {},
+        )
+      }
+    } else if (_options.configName) {
+      const config = webpackConfig.options.find((options) => options.name === _options.configName)
+      if (config) {
+        webpackConfig.options = config
+      } else {
+        log(`config "${_options.configName}" not found`)
+        return {}
+      }
+    } else {
+      log('multiple configurations found, please specify `configName` or `merge`')
+      return {}
+    }
+  }
   // https://github.com/webpack/webpack/blob/main/lib/webpack.js#L65
-  const options = webpack.config.getNormalizedWebpackOptions(webpackConfig.options as Configuration)
+  const options = webpack.config.getNormalizedWebpackOptions(webpackConfig.options)
   webpack.config.applyWebpackOptionsDefaults(options)
 
   const config = normalizeOptions(options)
@@ -120,4 +156,4 @@ export default {
   filename: ['webpack.config', '.webpack/webpack.config', '.webpack/webpackfile'],
   extensions: ['ts', 'js', 'mts', 'mjs', 'cts', 'cjs'],
   transformConfig: transformWebpackConfig,
-} as BundlerConfigTransformer
+} as BundlerConfigTransformer<'webpack'>
