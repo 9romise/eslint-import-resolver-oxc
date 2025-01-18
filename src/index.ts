@@ -59,6 +59,10 @@ export function createOxcImportResolver(options?: OxcResolverOptions | NapiResol
   }
 }
 
+export async function createOxcImportResolverAsync(options: OxcResolverOptions) {
+  return await createOxcImportResolver(options)
+}
+
 function createResolver(options?: OxcResolverOptions) {
   const resolvedOptions = normalizeOptions(options)
   const resolver = new ResolverFactory(resolvedOptions)
