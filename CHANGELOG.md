@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.9.0](https://github.com/9romise/eslint-import-resolver-oxc/compare/v0.8.0...v0.9.0) (2025-01-18)
+
+
+### Features
+
+* experimental support for `vite.config` ([#52](https://github.com/9romise/eslint-import-resolver-oxc/issues/52)) ([5a8d8a9](https://github.com/9romise/eslint-import-resolver-oxc/commit/5a8d8a9c9aba348efb602eaab000a0bfe53b8d4c))
+* experimental support for `webpack` ([#56](https://github.com/9romise/eslint-import-resolver-oxc/issues/56)) ([1bc1f7c](https://github.com/9romise/eslint-import-resolver-oxc/commit/1bc1f7c5a5e16464768dddf7053d0e746a6c0feb))
+* introduce `createOxcImportResolverAsync` ([2800396](https://github.com/9romise/eslint-import-resolver-oxc/commit/2800396f033187d46533344bde5348c4d422c9d8))
+
+
+### Chores
+
+* separate bundler test cases ([1b27e25](https://github.com/9romise/eslint-import-resolver-oxc/commit/1b27e256e8bd0631603c4c53515968129dc6480a))
+
 ## [0.8.0](https://github.com/9romise/eslint-import-resolver-oxc/compare/v0.7.0...v0.8.0) (2025-01-02)
 
 
