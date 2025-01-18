@@ -71,16 +71,16 @@
     "oxc-resolver": "^3.0.3"
   },
   "devDependencies": {
-    "@types/node": "^22.10.6",
+    "@types/node": "^22.10.7",
     "@vida0905/eslint-config": "^1.2.1",
     "es-toolkit": "^1.31.0",
     "eslint": "^9.18.0",
-    "eslint-vitest-rule-tester": "^1.0.0",
-    "lint-staged": "^15.3.0",
+    "eslint-vitest-rule-tester": "^1.1.0",
+    "lint-staged": "^15.4.1",
     "simple-git-hooks": "^2.11.1",
     "tsup": "^8.3.5",
     "typescript": "^5.7.3",
-    "vitest": "^2.1.8"
+    "vitest": "^3.0.2"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"
