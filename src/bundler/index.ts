@@ -33,7 +33,7 @@ export async function getBundlerConfig(options?: OxcResolverOptions['bundlerConf
   let { type, path } = options
 
   if (!type && !path) {
-    log('either `type` or `path` must be specified')
+    log('Either `type` or `path` must be specified')
     return {}
   }
 
@@ -56,14 +56,14 @@ export async function getBundlerConfig(options?: OxcResolverOptions['bundlerConf
   }
 
   if (!path) {
-    log(`cannot find ${path}`)
+    log(`Can't detect the bundler config, please try specify 'path'`)
     return {}
   }
 
   path = resolve(cwd(), path)
 
   if (!existsSync(path)) {
-    log(`cannot find ${path}`)
+    log(`Can't find ${type} config: ${path}`)
     return {}
   }
   return await config.transformConfig(path, options?.options).catch((err) => {

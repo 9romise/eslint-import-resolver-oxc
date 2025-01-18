@@ -63,5 +63,5 @@ export function mergeOptions(a: object, b: object) {
 
 export function log(...args: any[]) {
   // eslint-disable-next-line no-console
-  return console.log('[eslint-import-resolver-oxc]: ', ...args)
+  return console.log('[eslint-import-resolver-oxc]', ...args)
 }
