@@ -3,6 +3,7 @@ import { createHash } from 'node:crypto'
 import { existsSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { cwd } from 'node:process'
+import { pathToFileURL } from 'node:url'
 import { cloneDeep, isPlainObject, mergeWith } from 'es-toolkit'
 
 export const hashCache = new WeakMap<NapiResolveOptions, string>()
@@ -64,4 +65,18 @@ export function mergeOptions(a: object, b: object) {
 export function log(...args: any[]) {
   // eslint-disable-next-line no-console
   return console.log('[eslint-import-resolver-oxc]', ...args)
+}
+
+export async function tryRequireThenImport<T>(module: string): Promise<T> {
+  try {
+    // eslint-disable-next-line ts/no-require-imports
+    return require(module)
+  } catch (error: any) {
+    if (error.code === 'ERR_REQUIRE_ESM' || error.code === 'ERR_REQUIRE_ASYNC_MODULE') {
+      const url = pathToFileURL(module)
+      return (await import(url.toString())).default
+    } else {
+      throw error
+    }
+  }
 }

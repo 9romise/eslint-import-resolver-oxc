@@ -1,11 +1,9 @@
 import type { WebpackOptionsNormalized } from 'webpack'
 import type { IWebpackCLI } from 'webpack-cli'
 import type { BundlerConfigTransformer } from './index'
-import { log, mergeOptions } from '@/utils'
+import { log, mergeOptions, tryRequireThenImport } from '@/utils'
 import { isBoolean, isNil, isString } from 'es-toolkit'
 import { EnforceExtension, type NapiResolveOptions } from 'oxc-resolver'
-import webpack from 'webpack'
-import WebpackCLI from 'webpack-cli'
 
 function normalizeOptions(options: WebpackOptionsNormalized) {
   // https://github.com/webpack/webpack/blob/main/declarations/WebpackOptions.d.ts#L1556
@@ -83,7 +81,9 @@ export interface WebpackTransformerOptions {
 }
 
 export async function transformWebpackConfig(path: string, _options: WebpackTransformerOptions = {}): Promise<NapiResolveOptions> {
-  const cli = new (WebpackCLI as new () => IWebpackCLI)()
+  const WebpackCLI = await tryRequireThenImport<new () => IWebpackCLI>('webpack-cli')
+
+  const cli = new WebpackCLI()
   const webpackConfig = await cli.loadConfig({
     nodeEnv: 'production',
     config: [path],
@@ -116,6 +116,8 @@ export async function transformWebpackConfig(path: string, _options: WebpackTran
       return {}
     }
   }
+
+  const webpack = await cli.loadWebpack(false)
   // https://github.com/webpack/webpack/blob/main/lib/webpack.js#L65
   const options = webpack.config.getNormalizedWebpackOptions(webpackConfig.options)
   webpack.config.applyWebpackOptionsDefaults(options)
