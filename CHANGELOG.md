@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.1](https://github.com/9romise/eslint-import-resolver-oxc/compare/v0.9.0...v0.9.1) (2025-01-20)
+
+
+### Bug Fixes
+
+* dynamic import optional peerDependency ([#59](https://github.com/9romise/eslint-import-resolver-oxc/issues/59)) ([045970f](https://github.com/9romise/eslint-import-resolver-oxc/commit/045970fec7847af70e3284d255782ed7e66d7ac9))
+
 ## [0.9.0](https://github.com/9romise/eslint-import-resolver-oxc/compare/v0.8.0...v0.9.0) (2025-01-18)
 
 
