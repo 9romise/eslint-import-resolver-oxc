@@ -1,10 +1,10 @@
-import type { ResolveOptions, RspackOptions } from '@rspack/core'
+import type { ResolveOptions, RspackOptions, RspackOptionsNormalized } from '@rspack/core'
 import type { BundlerConfigTransformer } from './index'
 import { log, mergeOptions, tryRequireThenImport } from '@/utils'
 import { isBoolean, isNil, isString } from 'es-toolkit'
 import { EnforceExtension, type NapiResolveOptions } from 'oxc-resolver'
 
-function normalizeOptions(options: RspackOptions) {
+function normalizeOptions(options: RspackOptionsNormalized) {
   if (!options.resolve)
     return
   if (options.resolve.byDependency) {
@@ -107,7 +107,11 @@ export async function transformWebpackConfig(path: string, _options: RspackTrans
     }
   }
 
-  const config = normalizeOptions(rspackOptions as RspackOptions)
+  const { config: rspackConfig } = await tryRequireThenImport<typeof import('@rspack/core')>('@rspack/core')
+  const options = rspackConfig.getNormalizedRspackOptions(rspackOptions as RspackOptions)
+  rspackConfig.applyRspackOptionsDefaults(options)
+
+  const config = normalizeOptions(options)
   if (!config || !config.resolve)
     return {}
 
