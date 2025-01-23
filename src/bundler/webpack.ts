@@ -85,6 +85,7 @@ export async function transformWebpackConfig(path: string, _options: WebpackTran
 
   const cli = new WebpackCLI()
   const webpackConfig = await cli.loadConfig({
+    // @ts-expect-error waiting https://github.com/webpack/webpack-cli/pull/4378
     nodeEnv: 'production',
     config: [path],
   })
