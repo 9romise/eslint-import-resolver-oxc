@@ -43,14 +43,23 @@
     "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
+    "@rspack/cli": "*",
+    "@rspack/core": "*",
     "eslint": "*",
     "eslint-plugin-import": "*",
     "eslint-plugin-import-x": "*",
     "vite": "*",
     "webpack": "*",
-    "webpack-cli": "*"
+    "webpack-cli": "*",
+    "webpack-merge": "*"
   },
   "peerDependenciesMeta": {
+    "@rspack/cli": {
+      "optional": true
+    },
+    "@rspack/core": {
+      "optional": true
+    },
     "eslint-plugin-import": {
       "optional": true
     },
@@ -64,6 +73,9 @@
       "optional": true
     },
     "webpack-cli": {
+      "optional": true
+    },
+    "webpack-merge": {
       "optional": true
     }
   },
