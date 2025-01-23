@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.1](https://github.com/9romise/eslint-import-resolver-oxc/compare/v0.10.0...v0.10.1) (2025-01-23)
+
+
+### Bug Fixes
+
+* respect `rspack` default options ([97ea404](https://github.com/9romise/eslint-import-resolver-oxc/commit/97ea404518955c584a76aba55277c00a868f453d))
+
 ## [0.10.0](https://github.com/9romise/eslint-import-resolver-oxc/compare/v0.9.1...v0.10.0) (2025-01-23)
 
 
