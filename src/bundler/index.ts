@@ -4,12 +4,14 @@ import { existsSync } from 'node:fs'
 import { basename, resolve } from 'node:path'
 import { cwd } from 'node:process'
 import { detectFile, log } from '@/utils'
+import rspack from './rspack'
 import vite from './vite'
 import webpack from './webpack'
 
 const bundlerConfig = {
   vite,
   webpack,
+  rspack,
 }
 
 export type SupportedBundler = keyof typeof bundlerConfig
