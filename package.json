@@ -84,7 +84,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.10.8",
-    "@vida0905/eslint-config": "^1.2.1",
+    "@vida0905/eslint-config": "^2.0.0",
     "es-toolkit": "^1.31.0",
     "eslint": "^9.18.0",
     "eslint-vitest-rule-tester": "^1.1.0",
