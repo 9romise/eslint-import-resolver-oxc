@@ -1,8 +1,9 @@
 import type { ResolveOptions, RspackOptions, RspackOptionsNormalized } from '@rspack/core'
+import type { NapiResolveOptions } from 'oxc-resolver'
 import type { BundlerConfigTransformer } from './index'
 import { log, mergeOptions, tryRequireThenImport } from '@/utils'
 import { isBoolean, isNil, isString } from 'es-toolkit'
-import { EnforceExtension, type NapiResolveOptions } from 'oxc-resolver'
+import { EnforceExtension } from 'oxc-resolver'
 
 function normalizeOptions(options: RspackOptionsNormalized) {
   if (!options.resolve)
