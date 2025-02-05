@@ -83,16 +83,16 @@
     "oxc-resolver": "^4.0.0"
   },
   "devDependencies": {
-    "@types/node": "^22.10.8",
+    "@types/node": "^22.13.1",
     "@vida0905/eslint-config": "^2.0.0",
-    "es-toolkit": "^1.31.0",
-    "eslint": "^9.18.0",
+    "es-toolkit": "^1.32.0",
+    "eslint": "^9.19.0",
     "eslint-vitest-rule-tester": "^1.1.0",
-    "lint-staged": "^15.4.1",
+    "lint-staged": "^15.4.3",
     "simple-git-hooks": "^2.11.1",
-    "tsup": "^8.3.5",
+    "tsup": "^8.3.6",
     "typescript": "^5.7.3",
-    "vitest": "^3.0.3"
+    "vitest": "^3.0.5"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"
