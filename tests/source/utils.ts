@@ -1,7 +1,7 @@
-import type { OxcResolverOptions } from '@/typings'
+import type { OxcResolverOptions } from '~/typings'
 import { resolve } from 'node:path'
 import { describe, expect, it } from 'vitest'
-import { createOxcImportResolver } from '../../src/index'
+import { createOxcImportResolver } from '~/index'
 
 interface TestCaseBase {
   source: string

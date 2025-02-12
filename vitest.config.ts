@@ -6,7 +6,7 @@ export default defineConfig({
   test: {
     include: ['tests/**/*.test.ts'],
     alias: {
-      '@': resolve(cwd(), 'src'),
+      '~': resolve(cwd(), 'src'),
     },
   },
 })

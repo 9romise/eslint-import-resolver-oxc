@@ -1,7 +1,7 @@
 import type { NapiResolveOptions } from 'oxc-resolver'
 import type { Alias } from 'vite'
 import type { BundlerConfigTransformer } from './index'
-import { tryRequireThenImport } from '@/utils'
+import { tryRequireThenImport } from '~/utils'
 
 export interface ViteTranformerOptions {}
 

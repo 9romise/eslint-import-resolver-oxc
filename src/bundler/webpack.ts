@@ -2,9 +2,9 @@ import type { NapiResolveOptions } from 'oxc-resolver'
 import type { WebpackOptionsNormalized } from 'webpack'
 import type { IWebpackCLI } from 'webpack-cli'
 import type { BundlerConfigTransformer } from './index'
-import { log, mergeOptions, tryRequireThenImport } from '@/utils'
 import { isBoolean, isNil, isString } from 'es-toolkit'
 import { EnforceExtension } from 'oxc-resolver'
+import { log, mergeOptions, tryRequireThenImport } from '~/utils'
 
 function normalizeOptions(options: WebpackOptionsNormalized) {
   // https://github.com/webpack/webpack/blob/main/declarations/WebpackOptions.d.ts#L1556

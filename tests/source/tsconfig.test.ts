@@ -6,8 +6,8 @@ const rs = (...p: string[]) => resolve(import.meta.dirname, ...p)
 run({
   name: 'tsconfig',
   valid: [
-    { source: '@/index.ts', path: resolve('src/index.ts') },
-    { source: '@/index', path: resolve('src/index.ts') },
+    { source: '~/index.ts', path: resolve('src/index.ts') },
+    { source: '~/index', path: resolve('src/index.ts') },
   ],
   invalid: [],
 })
