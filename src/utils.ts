@@ -6,7 +6,7 @@ import { cwd } from 'node:process'
 import { pathToFileURL } from 'node:url'
 import { cloneDeep, isPlainObject, mergeWith } from 'es-toolkit'
 
-export const hashCache = new WeakMap<NapiResolveOptions, string>()
+export const hashCache: WeakMap<NapiResolveOptions, string> = new WeakMap<NapiResolveOptions, string>()
 
 export function generateHash(obj: any): string {
   function normalize(obj: any): string {
@@ -35,7 +35,7 @@ export function hashObject(obj: NapiResolveOptions): string {
   return hash
 }
 
-export function detectFile(files: string[]) {
+export function detectFile(files: string[]): string | undefined {
   for (const file of files) {
     const absPath = resolve(cwd(), file)
     if (existsSync(absPath)) {
@@ -44,7 +44,7 @@ export function detectFile(files: string[]) {
   }
 }
 
-export function mergeOptions(a: object, b: object) {
+export function mergeOptions(a: object, b: object): object {
   if (!a)
     return cloneDeep(b)
   if (!b)
@@ -62,7 +62,7 @@ export function mergeOptions(a: object, b: object) {
   return mergeWith(res, b, mergeFunc)
 }
 
-export function log(...args: any[]) {
+export function log(...args: any[]): void {
   // eslint-disable-next-line no-console
   return console.log('[eslint-import-resolver-oxc]', ...args)
 }

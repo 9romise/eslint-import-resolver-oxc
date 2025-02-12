@@ -14,9 +14,9 @@ export interface ExtendedRuleTesterOptions extends RuleTesterInitOptions, TestCa
   rule: keyof typeof rules
 }
 
-export const FIXTURES_PATH = path.resolve(import.meta.dirname, './fixtures')
+export const FIXTURES_PATH: string = path.resolve(import.meta.dirname, './fixtures')
 
-export function testFilePath(relativePath = 'foo.js') {
+export function testFilePath(relativePath = 'foo.js'): string {
   return path.resolve(FIXTURES_PATH, relativePath)
 }
 
@@ -25,7 +25,7 @@ const defaultFilenames = {
   ts: 'tests/eslint-plugin/fixtures/foo.ts',
 }
 
-export function run(options: ExtendedRuleTesterOptions) {
+export function run(options: ExtendedRuleTesterOptions): void {
   return _run({
     recursive: false,
     verifyAfterFix: false,

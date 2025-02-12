@@ -1,5 +1,4 @@
 import type { NapiResolveOptions } from 'oxc-resolver'
-import type { SupportedBundler } from './bundler'
 import type { RspackTransformerOptions } from './bundler/rspack'
 import type { ViteTranformerOptions } from './bundler/vite'
 import type { WebpackTransformerOptions } from './bundler/webpack'
@@ -15,6 +14,8 @@ interface BundlerTransformerOptions {
   webpack: WebpackTransformerOptions
   rspack: RspackTransformerOptions
 }
+
+export type SupportedBundler = 'vite' | 'webpack' | 'rspack'
 
 export type BundlerOption<T extends SupportedBundler = SupportedBundler> = {
   [K in SupportedBundler]: {

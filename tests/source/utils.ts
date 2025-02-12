@@ -24,7 +24,7 @@ interface Options {
 
 const defaultFileName = resolve(import.meta.dirname, 'fixtrues', 'index.ts')
 
-export async function run({ name, options: config, valid, invalid }: Options) {
+export async function run({ name, options: config, valid, invalid }: Options): Promise<void> {
   const resolver = await createOxcImportResolver(config)
 
   function normalizeCases<T extends ValidTestCase | InvalidTestCase>(cases: (T | string)[]) {

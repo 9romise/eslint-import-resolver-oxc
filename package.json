@@ -36,7 +36,7 @@
     "node": "^16.17.0 || >=18.6.0"
   },
   "scripts": {
-    "build": "tsup",
+    "build": "tsdown",
     "prepare": "npx simple-git-hooks && pnpm build",
     "lint": "eslint .",
     "test": "vitest",
@@ -90,8 +90,9 @@
     "eslint": "^9.20.1",
     "eslint-vitest-rule-tester": "^1.1.0",
     "lint-staged": "^15.4.3",
+    "oxc-transform": "^0.50.0",
     "simple-git-hooks": "^2.11.1",
-    "tsup": "^8.3.6",
+    "tsdown": "^0.5.9",
     "typescript": "^5.7.3",
     "vitest": "^3.0.5"
   },

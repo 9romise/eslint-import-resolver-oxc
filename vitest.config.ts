@@ -1,3 +1,4 @@
+import type { ViteUserConfig } from 'vitest/config'
 import { resolve } from 'node:path'
 import { cwd } from 'node:process'
 import { defineConfig } from 'vitest/config'
@@ -9,4 +10,4 @@ export default defineConfig({
       '~': resolve(cwd(), 'src'),
     },
   },
-})
+}) as ViteUserConfig

@@ -14,9 +14,11 @@
     "strictFunctionTypes": true,
     "strictNullChecks": true,
     "noUnusedLocals": true,
+    "declaration": true,
     "noEmit": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
+    "isolatedDeclarations": true,
     "skipLibCheck": true
   },
   "include": ["**/*.ts"],

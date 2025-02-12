@@ -59,7 +59,7 @@ export function createOxcImportResolver(options?: OxcResolverOptions | NapiResol
   }
 }
 
-export async function createOxcImportResolverAsync(options: OxcResolverOptions) {
+export async function createOxcImportResolverAsync(options: OxcResolverOptions): Promise<ImportResolver> {
   return await createOxcImportResolver(options)
 }
 

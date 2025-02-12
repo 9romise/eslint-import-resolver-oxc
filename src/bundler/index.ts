@@ -1,5 +1,5 @@
 import type { NapiResolveOptions } from 'oxc-resolver'
-import type { OxcResolverOptions } from '~/typings'
+import type { OxcResolverOptions, SupportedBundler } from '~/typings'
 import { existsSync } from 'node:fs'
 import { basename, resolve } from 'node:path'
 import { cwd } from 'node:process'
@@ -8,13 +8,11 @@ import rspack from './rspack'
 import vite from './vite'
 import webpack from './webpack'
 
-const bundlerConfig = {
+const bundlerConfig: Record<SupportedBundler, BundlerConfigTransformer> = {
   vite,
   webpack,
   rspack,
 }
-
-export type SupportedBundler = keyof typeof bundlerConfig
 
 export interface BundlerConfigTransformer {
   filename: string[]
@@ -22,7 +20,7 @@ export interface BundlerConfigTransformer {
   transformConfig: (path: string, options?: any) => Promise<NapiResolveOptions>
 }
 
-export async function getBundlerConfig(options?: OxcResolverOptions['bundlerConfig'] | null) {
+export async function getBundlerConfig(options?: OxcResolverOptions['bundlerConfig'] | null): Promise<NapiResolveOptions> {
   if (options == null)
     return {}
 
