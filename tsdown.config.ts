@@ -7,7 +7,6 @@ export default defineConfig({
   format: ['esm', 'cjs'],
   clean: true,
   platform: 'node',
-  shims: true,
   dts: { transformer: 'oxc' },
   alias: {
     '~': resolve('src'),
