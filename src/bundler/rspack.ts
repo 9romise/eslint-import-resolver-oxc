@@ -77,7 +77,7 @@ export interface RspackTransformerOptions {
   configName?: string
 }
 
-export async function transformWebpackConfig(path: string, _options: RspackTransformerOptions = {}): Promise<NapiResolveOptions> {
+export async function transformRspackConfig(path: string, _options: RspackTransformerOptions = {}): Promise<NapiResolveOptions> {
   const { RspackCLI } = await tryRequireThenImport<typeof import('@rspack/cli')>('@rspack/cli')
 
   const cli = new RspackCLI()
@@ -148,5 +148,5 @@ export default {
   filename: ['rspack.config'],
   // https://rspack.dev/config/index#typescript-configuration-file ts is not natively supported.
   extensions: ['js', 'mjs', 'cjs'],
-  transformConfig: transformWebpackConfig,
+  transformConfig: transformRspackConfig,
 } as BundlerConfigTransformer
