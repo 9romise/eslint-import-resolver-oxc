@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.11.0](https://github.com/9romise/eslint-import-resolver-oxc/compare/v0.10.1...v0.11.0) (2025-02-16)
+
+
+### Features
+
+* bump `oxc-resolver` to ^4.1.0 ([4a49f77](https://github.com/9romise/eslint-import-resolver-oxc/commit/4a49f777b699701ac1a7f3d6c745ebe1a561e0e7))
+
+
+### Bug Fixes
+
+* export `transformRspackConfig` ([68b0d11](https://github.com/9romise/eslint-import-resolver-oxc/commit/68b0d113ad6d912cd8b58643a25b3b0b6a2ae24b))
+
 ## [0.10.1](https://github.com/9romise/eslint-import-resolver-oxc/compare/v0.10.0...v0.10.1) (2025-01-23)
 
 
