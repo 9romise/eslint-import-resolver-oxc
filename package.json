@@ -1,7 +1,7 @@
 {
   "name": "eslint-import-resolver-oxc",
   "type": "module",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "packageManager": "pnpm@10.3.0",
   "description": "A simply wrapped `oxc-resolver` for `eslint-plugin-import-x` and `eslint-plugin-import`",
   "author": "Vida Xie<https://github.com/9romise>",
