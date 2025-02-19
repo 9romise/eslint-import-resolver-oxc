@@ -80,21 +80,21 @@
     }
   },
   "dependencies": {
-    "oxc-resolver": "^4.1.0"
+    "oxc-resolver": "^4.2.0"
   },
   "devDependencies": {
     "@types/node": "^22.13.4",
-    "@typescript-eslint/parser": "^8.24.0",
-    "@vida0905/eslint-config": "^2.1.0",
+    "@typescript-eslint/parser": "^8.24.1",
+    "@vida0905/eslint-config": "^2.1.2",
     "es-toolkit": "^1.32.0",
     "eslint": "^9.20.1",
     "eslint-vitest-rule-tester": "^1.1.0",
     "lint-staged": "^15.4.3",
     "oxc-transform": "^0.51.0",
     "simple-git-hooks": "^2.11.1",
-    "tsdown": "^0.5.9",
+    "tsdown": "^0.5.10",
     "typescript": "^5.7.3",
-    "vitest": "^3.0.5"
+    "vitest": "^3.0.6"
   },
   "pnpm": {
     "overrides": {
