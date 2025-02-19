@@ -89,7 +89,7 @@
     "es-toolkit": "^1.32.0",
     "eslint": "^9.20.1",
     "eslint-vitest-rule-tester": "^1.1.0",
-    "lint-staged": "^15.4.3",
+    "nano-staged": "^0.8.0",
     "oxc-transform": "^0.51.0",
     "simple-git-hooks": "^2.11.1",
     "tsdown": "^0.5.10",
@@ -102,9 +102,9 @@
     }
   },
   "simple-git-hooks": {
-    "pre-commit": "npx lint-staged"
+    "pre-commit": "npx nano-staged"
   },
-  "lint-staged": {
+  "nano-staged": {
     "*": "eslint --fix"
   }
 }
