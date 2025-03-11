@@ -98,7 +98,8 @@
   },
   "pnpm": {
     "overrides": {
-      "oxc-resolver": "^4.2.0"
+      "oxc-resolver": "^4.2.0",
+      "rolldown": "^1.0.0-beta.3"
     }
   },
   "simple-git-hooks": {

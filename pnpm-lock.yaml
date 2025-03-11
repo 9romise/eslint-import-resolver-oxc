@@ -6,6 +6,7 @@ settings:
 
 overrides:
   oxc-resolver: ^4.2.0
+  rolldown: ^1.0.0-beta.3
 
 importers:
 
