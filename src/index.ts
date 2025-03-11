@@ -9,6 +9,7 @@ import { normalizeOptions } from './normalizeOptions'
 import { hashObject } from './utils'
 
 export * from './bundler/exports'
+export * from './typings'
 
 let cachedOptionsHash: string | undefined
 let cachedResolver: ResolverFactory | undefined
