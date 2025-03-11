@@ -1,3 +1,5 @@
+import { resolve } from 'node:path'
+import { cwd } from 'node:process'
 import { run } from './utils'
 
 run({
@@ -26,6 +28,10 @@ run({
     '../../../vitest.config',
     '../../../src/index',
     '../../../src',
+    {
+      source: '../../../package.json?type=1',
+      path: resolve(cwd(), 'package.json'),
+    },
   ],
   invalid: [
     '../inexistent.ts',
@@ -42,6 +48,10 @@ run({
     'vitest.config.ts',
     'src/index.ts',
     'src/index',
+    {
+      source: 'package.json?type=1',
+      path: resolve(cwd(), 'package.json'),
+    },
   ],
   invalid: [
     'inexistent.ts',

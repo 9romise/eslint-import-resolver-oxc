@@ -6,7 +6,7 @@ import { isNil, pickBy } from 'es-toolkit'
 import { ResolverFactory } from 'oxc-resolver'
 import { getBundlerConfig } from './bundler'
 import { normalizeOptions } from './normalizeOptions'
-import { hashObject } from './utils'
+import { hashObject, removeQuerystring } from './utils'
 
 export * from './bundler/exports'
 export * from './typings'
@@ -30,6 +30,8 @@ export function resolve(source: string, file: string, options?: OxcResolverOptio
 
     resolver = cachedResolver
   }
+
+  source = removeQuerystring(source)
 
   // https://github.com/oxc-project/oxc-resolver/blob/main/npm/README.md#api
   const result = resolver.sync(dirname(file), source)

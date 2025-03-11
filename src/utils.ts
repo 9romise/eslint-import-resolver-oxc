@@ -80,3 +80,11 @@ export async function tryRequireThenImport<T>(module: string): Promise<T> {
     }
   }
 }
+
+export function removeQuerystring(id: string): string {
+  const querystringIndex = id.lastIndexOf('?')
+  if (querystringIndex >= 0) {
+    return id.slice(0, querystringIndex)
+  }
+  return id
+}
