@@ -83,18 +83,18 @@
     "oxc-resolver": "^4.2.0"
   },
   "devDependencies": {
-    "@types/node": "^22.13.4",
-    "@typescript-eslint/parser": "^8.24.1",
+    "@types/node": "^22.13.10",
+    "@typescript-eslint/parser": "^8.26.1",
     "@vida0905/eslint-config": "^2.1.2",
-    "es-toolkit": "^1.32.0",
-    "eslint": "^9.20.1",
+    "es-toolkit": "^1.33.0",
+    "eslint": "^9.22.0",
     "eslint-vitest-rule-tester": "^1.1.0",
     "nano-staged": "^0.8.0",
-    "oxc-transform": "^0.51.0",
+    "oxc-transform": "^0.57.0",
     "simple-git-hooks": "^2.11.1",
-    "tsdown": "^0.6.0",
-    "typescript": "^5.7.3",
-    "vitest": "^3.0.6"
+    "tsdown": "^0.6.6",
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.8"
   },
   "pnpm": {
     "overrides": {
