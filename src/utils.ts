@@ -1,29 +1,13 @@
 import type { NapiResolveOptions } from 'oxc-resolver'
-import { createHash } from 'node:crypto'
 import { existsSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { cwd } from 'node:process'
 import { pathToFileURL } from 'node:url'
 import { cloneDeep, isPlainObject, mergeWith } from 'es-toolkit'
 
+import { stableHash as generateHash } from 'stable-hash'
+
 export const hashCache: WeakMap<NapiResolveOptions, string> = new WeakMap<NapiResolveOptions, string>()
-
-export function generateHash(obj: any): string {
-  function normalize(obj: any): string {
-    if (obj === null || obj === 'undefined') {
-      return 'null'
-    } else if (typeof obj !== 'object') {
-      return obj.toString()
-    } else if (Array.isArray(obj)) {
-      return `[${obj.map(normalize).sort().join(',')}]`
-    }
-    const sortedKeys = Object.keys(obj).sort()
-    return `{${sortedKeys.map((key) => `${key}:${normalize(obj[key])}`).join(',')}}`
-  }
-
-  const normalizedString = normalize(obj)
-  return createHash('md5').update(normalizedString).digest('hex')
-}
 
 export function hashObject(obj: NapiResolveOptions): string {
   if (hashCache.has(obj)) {
