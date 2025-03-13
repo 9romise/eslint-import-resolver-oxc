@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.13.1](https://github.com/9romise/eslint-import-resolver-oxc/compare/v0.13.0...v0.13.1) (2025-03-13)
+
+
+### Performance
+
+* faster hashing for config object ([#73](https://github.com/9romise/eslint-import-resolver-oxc/issues/73)) ([9f18801](https://github.com/9romise/eslint-import-resolver-oxc/commit/9f188010ec81a69fcadf46db1b36566b18f80ef8))
+
 ## [0.13.0](https://github.com/9romise/eslint-import-resolver-oxc/compare/v0.12.0...v0.13.0) (2025-03-11)
 
 
