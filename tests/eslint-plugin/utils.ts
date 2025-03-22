@@ -25,7 +25,7 @@ const defaultFilenames = {
   ts: 'tests/eslint-plugin/fixtures/foo.ts',
 }
 
-export function run(options: ExtendedRuleTesterOptions): void {
+export function run(options: ExtendedRuleTesterOptions): Promise<void> {
   return _run({
     recursive: false,
     verifyAfterFix: false,
