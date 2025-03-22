@@ -2,7 +2,7 @@
   "name": "eslint-import-resolver-oxc",
   "type": "module",
   "version": "0.13.1",
-  "packageManager": "pnpm@10.3.0",
+  "packageManager": "pnpm@10.6.5",
   "description": "A simply wrapped `oxc-resolver` for `eslint-plugin-import-x` and `eslint-plugin-import`",
   "author": "Vida Xie<https://github.com/9romise>",
   "license": "MIT",
@@ -80,27 +80,26 @@
     }
   },
   "dependencies": {
-    "oxc-resolver": "^5.0.0",
-    "stable-hash": "0.0.5"
+    "oxc-resolver": "^5.0.1",
+    "stable-hash": "^0.0.5"
   },
   "devDependencies": {
-    "@types/node": "^22.13.10",
-    "@typescript-eslint/parser": "^8.26.1",
+    "@types/node": "^22.13.11",
+    "@typescript-eslint/parser": "^8.27.0",
     "@vida0905/eslint-config": "^2.1.2",
     "es-toolkit": "^1.33.0",
-    "eslint": "^9.22.0",
-    "eslint-vitest-rule-tester": "^1.1.0",
+    "eslint": "^9.23.0",
+    "eslint-vitest-rule-tester": "^2.1.0",
     "nano-staged": "^0.8.0",
-    "oxc-transform": "^0.57.0",
-    "simple-git-hooks": "^2.11.1",
-    "tsdown": "^0.6.6",
+    "oxc-transform": "^0.61.1",
+    "simple-git-hooks": "^2.12.1",
+    "tsdown": "^0.6.9",
     "typescript": "^5.8.2",
-    "vitest": "^3.0.8"
+    "vitest": "^3.0.9"
   },
   "pnpm": {
     "overrides": {
-      "oxc-resolver": "^5.0.0",
-      "rolldown": "^1.0.0-beta.3"
+      "oxc-resolver": "^5.0.1"
     }
   },
   "simple-git-hooks": {
