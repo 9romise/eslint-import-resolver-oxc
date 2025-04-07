@@ -91,7 +91,7 @@
     "eslint": "^9.23.0",
     "eslint-vitest-rule-tester": "^2.1.0",
     "nano-staged": "^0.8.0",
-    "oxc-transform": "^0.61.1",
+    "oxc-transform": "^0.62.0",
     "simple-git-hooks": "^2.12.1",
     "tsdown": "^0.6.9",
     "typescript": "^5.8.2",
