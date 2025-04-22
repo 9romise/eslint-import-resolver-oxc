@@ -7,9 +7,10 @@ export default defineConfig({
   format: ['esm', 'cjs'],
   clean: true,
   platform: 'node',
-  dts: { transformer: 'oxc' },
+  dts: {
+    isolatedDeclarations: true,
+  },
   alias: {
     '~': resolve('src'),
   },
-  bundleDts: true,
 }) as UserConfig
