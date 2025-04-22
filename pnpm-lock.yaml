@@ -5,7 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  oxc-resolver: ^5.0.1
+  oxc-resolver: ^5.3.0
 
 importers:
 
@@ -24,7 +24,7 @@ importers:
         specifier: '*'
         version: 4.10.6(eslint@9.25.1(jiti@2.4.2))(typescript@5.8.3)
       oxc-resolver:
-        specifier: ^5.0.1
+        specifier: ^5.3.0
         version: 5.3.0
       stable-hash:
         specifier: ^0.0.5
