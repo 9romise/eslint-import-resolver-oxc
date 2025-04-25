@@ -9,7 +9,7 @@ A simply wrapped [`oxc-resolver`](https://github.com/oxc-project/oxc-resolver) f
 
 ## Feature
 
-A good replacement for [`eslint-import-resolver-node`](https://github.com/import-js/eslint-plugin-import/tree/main/resolvers/node#readme) and [`eslint-import-resolver-typescript`](https://github.com/import-js/eslint-import-resolver-typescript).
+A good replacement for [`eslint-import-resolver-node`](https://github.com/import-js/eslint-plugin-import/tree/main/resolvers/node#readme).
 
 You can get more info about _resolver_ in [the README of eslint-plugin-import-x](https://github.com/un-ts/eslint-plugin-import-x?tab=readme-ov-file#resolvers).
 
@@ -139,11 +139,6 @@ export default [
 The `jsconfig.json` and `tsconfig.json` in the root directory (`cwd`) will automatically detected.
 
 More options see [oxc-resolver](https://github.com/oxc-project/oxc-resolver?tab=readme-ov-file#options)
-
-## Who is using?
-
-- [`Rel1cx/eslint-react`](https://github.com/Rel1cx/eslint-react) - A series of composable ESLint rules for libraries and frameworks that use React as a UI runtime.
-- [`SocketDev/socket-cli`](https://github.com/SocketDev/socket-cli) - Next-gen SCA + SBOM + 0-day prevention.
 
 ## Motivation
 
