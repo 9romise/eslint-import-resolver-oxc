@@ -7,6 +7,12 @@
 
 A simply wrapped [`oxc-resolver`](https://github.com/oxc-project/oxc-resolver) for [`eslint-plugin-import-x`](https://github.com/un-ts/eslint-plugin-import-x) and [`eslint-plugin-import`](https://github.com/import-js/eslint-plugin-import).
 
+> [!NOTE]
+>
+> As of now, [`eslint-import-resolver-typescript`](https://github.com/import-js/eslint-import-resolver-typescript) has been fully optimized for performance by using [`unrs-resolver`](https://github.com/unrs/unrs-resolver).
+>
+> We recommend prioritizing the officially maintained resolver.
+
 ## Feature
 
 A good replacement for [`eslint-import-resolver-node`](https://github.com/import-js/eslint-plugin-import/tree/main/resolvers/node#readme).
