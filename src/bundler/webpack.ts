@@ -146,7 +146,7 @@ export async function transformWebpackConfig(path: string, _options: WebpackTran
     importsFields: config.resolve.importsFields,
     mainFields: transformMainFields(config.resolve.mainFields),
     mainFiles: config.resolve.mainFiles,
-    modules: config.resolve.modules,
+    // modules: config.resolve.modules,
     preferAbsolute: config.resolve.preferAbsolute,
     preferRelative: config.resolve.preferRelative,
     restrictions: transformRestrictions(config.resolve.restrictions),

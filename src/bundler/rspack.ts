@@ -134,7 +134,7 @@ export async function transformRspackConfig(path: string, _options: RspackTransf
     importsFields: config.resolve.importsFields,
     mainFields: config.resolve.mainFields,
     mainFiles: config.resolve.mainFiles,
-    modules: config.resolve.modules,
+    // modules: config.resolve.modules,
     preferAbsolute: config.resolve.preferAbsolute,
     preferRelative: config.resolve.preferRelative,
     restrictions: transformRestrictions(config.resolve.restrictions),
