@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.14.0](https://github.com/9romise/eslint-import-resolver-oxc/compare/v0.13.2...v0.14.0) (2025-05-08)
+
+
+### Features
+
+* update `oxc-resolver` to ^8.0.0 ([d2de3f1](https://github.com/9romise/eslint-import-resolver-oxc/commit/d2de3f166b8c2ab3c1ce085bc7c7e4174983fea9))
+
 ## [0.13.2](https://github.com/9romise/eslint-import-resolver-oxc/compare/v0.13.1...v0.13.2) (2025-04-22)
 
 
