@@ -4,8 +4,7 @@ import { resolve } from 'node:path'
 import { cwd } from 'node:process'
 import { pathToFileURL } from 'node:url'
 import { cloneDeep, isPlainObject, mergeWith } from 'es-toolkit'
-
-import { stableHash as generateHash } from 'stable-hash'
+import { stableHash } from 'stable-hash-x'
 
 export const hashCache: WeakMap<NapiResolveOptions, string> = new WeakMap<NapiResolveOptions, string>()
 
@@ -14,7 +13,7 @@ export function hashObject(obj: NapiResolveOptions): string {
     return hashCache.get(obj)!
   }
 
-  const hash = generateHash(obj)
+  const hash = stableHash(obj)
   hashCache.set(obj, hash)
   return hash
 }

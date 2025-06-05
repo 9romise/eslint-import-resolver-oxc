@@ -81,7 +81,7 @@
     }
   },
   "dependencies": {
-    "stable-hash": "^0.0.5"
+    "stable-hash-x": "^0.1.1"
   },
   "devDependencies": {
     "@types/node": "^22.15.29",
