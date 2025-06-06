@@ -98,7 +98,7 @@
   },
   "pnpm": {
     "overrides": {
-      "eslint-import-resolver-oxc": "file:."
+      "@vida0905/eslint-config>eslint-import-resolver-oxc": "file:"
     }
   },
   "simple-git-hooks": {
