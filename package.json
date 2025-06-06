@@ -40,7 +40,7 @@
     "lint": "eslint .",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
-    "prepublishOnly": "pnpm build"
+    "prepare": "pnpm build"
   },
   "peerDependencies": {
     "@rspack/cli": "*",
@@ -95,6 +95,11 @@
     "tsdown": "^0.12.7",
     "typescript": "^5.8.3",
     "vitest": "^3.2.2"
+  },
+  "pnpm": {
+    "overrides": {
+      "eslint-import-resolver-oxc": "file:."
+    }
   },
   "simple-git-hooks": {
     "pre-commit": "npx nano-staged"
