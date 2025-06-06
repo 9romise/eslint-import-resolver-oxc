@@ -37,10 +37,10 @@
   },
   "scripts": {
     "build": "tsdown",
-    "prepare": "npx simple-git-hooks && pnpm build",
     "lint": "eslint .",
     "test": "vitest",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "pnpm build"
   },
   "peerDependencies": {
     "@rspack/cli": "*",
