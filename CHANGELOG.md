@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.15.0](https://github.com/9romise/eslint-import-resolver-oxc/compare/v0.14.0...v0.15.0) (2025-06-06)
+
+
+### Features
+
+* migrate `stable-hash` to `stable-hash-x` ([0ee9d28](https://github.com/9romise/eslint-import-resolver-oxc/commit/0ee9d28c26407c2b65718c0cb0e494bb60d8e906))
+* treat `oxc-resolver` as peerDependency ([2a396f2](https://github.com/9romise/eslint-import-resolver-oxc/commit/2a396f2f5ea8e0ce01415ed72dc7fff811490638))
+
+
+### Performance
+
+* remove unnecessary hash cache ([4cc59a0](https://github.com/9romise/eslint-import-resolver-oxc/commit/4cc59a0ef0f19ea5cb1856fd67023559606ee73f))
+
 ## [0.14.0](https://github.com/9romise/eslint-import-resolver-oxc/compare/v0.13.2...v0.14.0) (2025-05-08)
 
 
