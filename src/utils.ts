@@ -1,22 +1,8 @@
-import type { NapiResolveOptions } from 'oxc-resolver'
 import { existsSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { cwd } from 'node:process'
 import { pathToFileURL } from 'node:url'
 import { cloneDeep, isPlainObject, mergeWith } from 'es-toolkit'
-import { stableHash } from 'stable-hash-x'
-
-export const hashCache: WeakMap<NapiResolveOptions, string> = new WeakMap<NapiResolveOptions, string>()
-
-export function hashObject(obj: NapiResolveOptions): string {
-  if (hashCache.has(obj)) {
-    return hashCache.get(obj)!
-  }
-
-  const hash = stableHash(obj)
-  hashCache.set(obj, hash)
-  return hash
-}
 
 export function detectFile(files: string[]): string | undefined {
   for (const file of files) {

@@ -4,9 +4,10 @@ import { isBuiltin } from 'node:module'
 import { dirname } from 'node:path'
 import { isNil, pickBy } from 'es-toolkit'
 import { ResolverFactory } from 'oxc-resolver'
+import { stableHash } from 'stable-hash-x'
 import { getBundlerConfig } from './bundler'
 import { normalizeOptions } from './normalizeOptions'
-import { hashObject, removeQuerystring } from './utils'
+import { removeQuerystring } from './utils'
 
 export * from './bundler/exports'
 export * from './typings'
@@ -20,7 +21,7 @@ export function resolve(source: string, file: string, options?: OxcResolverOptio
 
   if (resolver == null) {
     options ??= {}
-    const optionsHash = hashObject(options)
+    const optionsHash = stableHash(options)
 
     if (!cachedResolver || cachedOptionsHash !== optionsHash) {
       options = normalizeOptions(options)
