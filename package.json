@@ -84,10 +84,10 @@
     "stable-hash-x": "^0.1.1"
   },
   "devDependencies": {
-    "@types/node": "^22.15.29",
+    "@types/node": "^22.15.30",
     "@typescript-eslint/parser": "^8.33.1",
-    "@vida0905/eslint-config": "^2.1.2",
-    "es-toolkit": "^1.39.0",
+    "@vida0905/eslint-config": "^2.3.0",
+    "es-toolkit": "^1.39.3",
     "eslint": "^9.28.0",
     "eslint-vitest-rule-tester": "^2.2.0",
     "nano-staged": "^0.8.0",
@@ -95,11 +95,6 @@
     "tsdown": "^0.12.7",
     "typescript": "^5.8.3",
     "vitest": "^3.2.2"
-  },
-  "pnpm": {
-    "overrides": {
-      "@vida0905/eslint-config>eslint-import-resolver-oxc": "file:"
-    }
   },
   "simple-git-hooks": {
     "pre-commit": "npx nano-staged"
