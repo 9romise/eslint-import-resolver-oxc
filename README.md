@@ -11,7 +11,7 @@ A simply wrapped [`oxc-resolver`](https://github.com/oxc-project/oxc-resolver) f
 >
 > As of now, [`eslint-import-resolver-typescript`](https://github.com/import-js/eslint-import-resolver-typescript) has been fully optimized for performance by using [`unrs-resolver`](https://github.com/unrs/unrs-resolver).
 >
-> We recommend prioritizing the officially maintained resolver.
+> If you don't use oxc-eco packages, we recommend prioritizing the officially maintained resolver.
 
 ## Feature
 
