@@ -1,12 +1,11 @@
 import { existsSync } from 'node:fs'
 import { resolve } from 'node:path'
-import { cwd } from 'node:process'
 import { pathToFileURL } from 'node:url'
 import { cloneDeep, isPlainObject, mergeWith } from 'es-toolkit'
 
-export function detectFile(files: string[]): string | undefined {
+export function detectFile(files: string[], cwd = process.cwd()): string | undefined {
   for (const file of files) {
-    const absPath = resolve(cwd(), file)
+    const absPath = resolve(cwd, file)
     if (existsSync(absPath)) {
       return absPath
     }
