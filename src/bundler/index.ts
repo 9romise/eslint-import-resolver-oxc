@@ -2,7 +2,6 @@ import type { NapiResolveOptions } from 'oxc-resolver'
 import type { OxcResolverOptions, SupportedBundler } from '~/typings'
 import { existsSync } from 'node:fs'
 import { basename, resolve } from 'node:path'
-import { cwd } from 'node:process'
 import { detectFile, log } from '~/utils'
 import rspack from './rspack'
 import vite from './vite'
@@ -20,7 +19,7 @@ export interface BundlerConfigTransformer {
   transformConfig: (path: string, options?: any) => Promise<NapiResolveOptions>
 }
 
-export async function getBundlerConfig(options?: OxcResolverOptions['bundlerConfig'] | null): Promise<NapiResolveOptions> {
+export async function getBundlerConfig(options?: OxcResolverOptions['bundlerConfig'] | null, cwd = process.cwd()): Promise<NapiResolveOptions> {
   if (options == null)
     return {}
 
@@ -60,7 +59,7 @@ export async function getBundlerConfig(options?: OxcResolverOptions['bundlerConf
     return {}
   }
 
-  path = resolve(cwd(), path)
+  path = resolve(cwd, path)
 
   if (!existsSync(path)) {
     log(`Can't find ${type} config: ${path}`)

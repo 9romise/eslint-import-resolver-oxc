@@ -50,7 +50,8 @@ export function createOxcImportResolver(options?: OxcResolverOptions): Promise<I
 export function createOxcImportResolver(options?: OxcResolverOptions | NapiResolveOptions) {
   if (options && Object.prototype.hasOwnProperty.call(options, 'bundlerConfig')) {
     return new Promise((resolve) => {
-      getBundlerConfig((options as OxcResolverOptions).bundlerConfig).then((bundlerOptions) => {
+      const context = (globalThis as any).eslintImportContext?.useRuleContext?.()
+      getBundlerConfig((options as OxcResolverOptions).bundlerConfig, context?.cwd || process.cwd()).then((bundlerOptions) => {
         const resolver = createResolver({
           ...pickBy(bundlerOptions, (val) => !isNil(val)),
           ...options,

@@ -1,5 +1,4 @@
 import type { NapiResolveOptions } from 'oxc-resolver'
-import { cwd } from 'node:process'
 import { detectFile } from './utils'
 
 // @keep-sorted
@@ -64,12 +63,12 @@ const defaultOptions: NapiResolveOptions = {
     'browser',
     'jsnext:main',
   ],
-  roots: [cwd()],
+  roots: [process.cwd()],
 }
 
-export function normalizeOptions(options: NapiResolveOptions = {}): NapiResolveOptions {
+export function normalizeOptions(options: NapiResolveOptions = {}, cwd = process.cwd()): NapiResolveOptions {
   if (!options?.tsconfig) {
-    const configFile = detectFile(['tsconfig.json', 'jsconfig.json'])
+    const configFile = detectFile(['tsconfig.json', 'jsconfig.json'], cwd)
     if (configFile) {
       defaultOptions.tsconfig = {
         configFile,
